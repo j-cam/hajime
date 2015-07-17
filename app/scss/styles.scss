@@ -129,26 +129,9 @@
 @import "04-modules/site-nav/site-nav-common";
 @import "04-modules/site-nav/site-nav-desktop";
 @import "04-modules/site-nav/site-nav-mobile";
-@import "04-modules/octo-code";
 @import "04-modules/sign-up";
 @import "04-modules/footer";
 
-
-/* ----------------------------------------
-	TEMPLATES
-	styles specific to page templates
-
-	AKA Themesfrom SMACCS
-	Themes can affect any of the primary types. They can
-	override base styles like default link colours. They can change
-	module elements such as colours and borders. They can affect
-	layout with different arrangements. They can also alter how states look.
------------------------------------------ */
-@import "05-templates/home";
-@import "05-templates/product-list";
-@import "05-templates/product-detail";
-@import "05-templates/visual";
-@import "05-templates/contact";
 
 
 /* ----------------------------------------
