@@ -1,0 +1,163 @@
+/*
+=========================================================================================
+	SASS ARCHITECTURE
+	directory naming based on a combination of
+	-- patterlab-php
+	--- https://github.com/pattern-lab/patternlab-php/tree/master/core/source/_patterns
+ 	-- SMACCS
+ 	--- https://github.com/minamarkham/sassy-starter
+=========================================================================================
+*/
+
+/*
+============================================
+	CSS/SASS STYLE GUIDE
+	Use BEM Syntax
+	Primer: https://css-tricks.com/bem-101/
+============================================
+	// Block component
+	.btn {}
+
+	// Element that depends upon the block
+	.btn__price {}
+
+	// Modifier that changes the style of the block
+	.btn--orange {}
+	.btn--big {}
+
+	// HTML
+	// <a class="btn btn--big btn--orange" href="http://css-tricks.com">
+	//   <span class="btn__price">$9.99</span>
+	//   <span class="btn__text">Subscribe</span>
+	// </a>
+
+	// ------------------------
+		SASS SHORTHAND BEM BLOCK
+	// ------------------------
+	// Block component
+	.block {
+
+	    // Element that depends upon the block
+	    &__element {
+	       //some styles here
+	    }
+
+		// Modifier that changes the style of the block
+	    &--mod {
+	       //some styles here
+	    }
+	}
+
+============================================== */
+
+/*
+==========================================
+	SASS IMPORTS
+==========================================
+*/
+
+
+/* ------------------------------------------
+	UTILITIES
+	dynamic tools for generating output
+--------------------------------------------- */
+@import "01-utilities/lib";
+@import "01-utilities/variables";
+@import "01-utilities/mixins";
+@import "01-utilities/functions";
+@import "01-utilities/helpers";
+@import "01-utilities/shopify-asset-helper";
+
+
+
+@import "03-layout/grid"; // Uses Susy 2 & Breakpoint
+
+/* ---------------------------------
+
+	BASE
+
+	A Base rule is applied to an element using an element selector, a
+	descendent selector, or a child selector, along with any pseudo-classes.
+	It doesn’t include any class or ID selectors. It is defining the default
+	styling for how that element should look in all occurrences on the page.
+
+
+------------------------------------ */
+@import "02-base/basic-selectors";
+@import "02-base/headings";
+@import "02-base/lists";
+@import "02-base/tables";
+@import "02-base/form-inputs";
+
+
+/* ------------------------------------------
+
+	LAYOUT
+
+	Layout styles can also be divided into major and minor styles based on
+	reuse. Major layout styles such as header and footer are traditionally
+	styled using ID selectors but take the time to think about the elements
+	that are common across all components of the page and use class selectors
+	where appropriate.
+
+--------------------------------------------- */
+
+@import "03-layout/structure";
+
+
+
+/* ----------------------------------------
+	MODULES
+
+	A Module is a more discrete component of the page. It is your
+	navigation bars and your carousels and your dialogs and your widgets
+	and so on. This is the meat of the page.
+
+	Modules sit inside Layout components.
+	Modules can sometimes sit within other Modules, too.
+
+	Each Module should be designed to exist as a standalone
+	component. In doing so, the page will be more flexible. If done right,
+	Modules can easily be moved to different parts of the layout without
+	breaking.
+
+	When defining the rule set for a module, avoid using IDs and element
+	selectors, sticking only to class names. A module will likely contain a
+	number of elements and there is likely to be a desire to use descendent
+	or child selectors to target those elements.
+------------------------------------------- */
+@import "04-modules/site-nav/site-nav-common";
+@import "04-modules/site-nav/site-nav-desktop";
+@import "04-modules/site-nav/site-nav-mobile";
+@import "04-modules/octo-code";
+@import "04-modules/sign-up";
+@import "04-modules/footer";
+
+
+/* ----------------------------------------
+	TEMPLATES
+	styles specific to page templates
+
+	AKA Themesfrom SMACCS
+	Themes can affect any of the primary types. They can
+	override base styles like default link colours. They can change
+	module elements such as colours and borders. They can affect
+	layout with different arrangements. They can also alter how states look.
+----------------------------------------- */
+@import "05-templates/home";
+@import "05-templates/product-list";
+@import "05-templates/product-detail";
+@import "05-templates/visual";
+@import "05-templates/contact";
+
+
+/* ----------------------------------------
+	SHAME
+
+	because hacks happen.
+
+	be very specific about what each piece of code is doing, and
+	how to better fix it later
+
+----------------------------------------- */
+@import "shame";

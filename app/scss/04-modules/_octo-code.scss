@@ -1,0 +1,7 @@
+.octo-code {
+	font-family: $serif;
+	width: 100%;
+	text-align: center;
+	@include font-size( 11px );
+	margin: em(20px) em(20px) em(12px) em(20px);
+}
