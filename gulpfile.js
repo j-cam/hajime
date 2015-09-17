@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 // Requiring Sass
 var sass = require('gulp-sass');
+var cssGlobbing = require('gulp-css-globbing');
 // Requiring autoprefixer
 var autoprefixer = require('gulp-autoprefixer');
 // Requiring Sourcemaps
@@ -15,16 +16,24 @@ gulp.task('hello', function() {
 
 
 gulp.task('sass', function() {
-    gulp.src('app/scss/styles.scss') // Gets the styles.scss file
-        .pipe(sourcemaps.init()) // Initialize sourcemap plugin
-        .pipe(sass()) // Passes it through a gulp-sass task
-        .pipe(autoprefixer()) // Passes it through gulp-autoprefixer
-        .pipe(sourcemaps.write()) // Writing sourcemaps
-        .pipe(gulp.dest('app/css')) // Outputs it in the css folder
+    gulp.src('app/scss/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(cssGlobbing({
+            // Configure it to use SCSS files
+            extensions: ['.scss', '.sass', '.css']
+        }))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        })) // Passes it through gulp-autoprefixer
+        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('app/css'))
         // Reloading the stream
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+        // .pipe(browserSync.reload({
+        //     stream: true
+        // }));
 });
 
 
