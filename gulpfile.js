@@ -16,7 +16,7 @@ gulp.task('hello', function() {
 
 
 gulp.task('sass', function() {
-    gulp.src('app/scss/*.scss')
+    gulp.src('src/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(cssGlobbing({
             // Configure it to use SCSS files
@@ -29,7 +29,7 @@ gulp.task('sass', function() {
         })) // Passes it through gulp-autoprefixer
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('app/css'))
+        .pipe(gulp.dest('src/css'))
         // Reloading the stream
         // .pipe(browserSync.reload({
         //     stream: true
@@ -39,8 +39,8 @@ gulp.task('sass', function() {
 
 // ['task', 'otherTask',...] runs watch after these tasks have completed
 gulp.task('watch', ['browserSync', 'sass'], function() {
-    gulp.watch('app/scss/styles.scss', ['sass']);
-    gulp.watch('app/index.html', browserSync.reload);
+    gulp.watch('src/scss/styles.scss', ['sass']);
+    gulp.watch('src/index.html', browserSync.reload);
 });
 
 
@@ -48,7 +48,7 @@ gulp.task('watch', ['browserSync', 'sass'], function() {
 gulp.task('browserSync', function() {
     browserSync({
         server: {
-            baseDir: 'app'
+            baseDir: 'src'
         }
     })
 })
