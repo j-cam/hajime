@@ -1,22 +1,41 @@
 // Requiring Gulp
 var gulp = require('gulp');
-// Requiring Sass
+var config = require('./build.config.json');
+
+var newer = require('gulp-newer');
+var gulpIf = require('gulp-if');
+var concat = require('gulp-concat');
+var util = require('gulp-util');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var cssGlobbing = require('gulp-css-globbing');
-// Requiring autoprefixer
 var autoprefixer = require('gulp-autoprefixer');
-// Requiring Sourcemaps
 var sourcemaps = require('gulp-sourcemaps');
-// Requiring Browser Sync
+var imageMin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
 
-gulp.task('hello', function() {
-    console.log('Hello Sir!');
+
+// Gulp check for watcing this file
+gulp.slurped = false;
+
+// Trigger
+var production = true;
+
+
+gulp.task('clean', function () {
+    // Clear the destination folder
+    gulp.src(config.root + '/**/*.*', { read: false })
+        .pipe(clean({ force: true }));
 });
 
 
-gulp.task('sass', function() {
-    gulp.src('src/scss/*.scss')
+
+
+
+// Task: Handle Sass and CSS
+gulp.task('styles', function() {
+    gulp.src(config.styles.files)
         .pipe(sourcemaps.init())
         .pipe(cssGlobbing({
             // Configure it to use SCSS files
@@ -29,26 +48,78 @@ gulp.task('sass', function() {
         })) // Passes it through gulp-autoprefixer
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('src/css'))
-        // Reloading the stream
-        // .pipe(browserSync.reload({
-        //     stream: true
-        // }));
+        .pipe(gulp.dest(
+            config.styles.dest
+        ))
+        .pipe(browserSync.reload({stream:true}));
+});
+
+
+
+// Task: Handle scripts
+gulp.task('scripts', function () {
+  return gulp.src(config.scripts.files)
+    .pipe(concat(
+      'main.js'
+    ))
+    .pipe(gulpIf(production, uglify()))
+    .pipe(gulpIf(production, rename({
+      suffix: '.min'
+    })))
+    .pipe(gulp.dest(
+      config.scripts.dest
+    ))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+
+// Task: Handle images
+gulp.task('images', function () {
+  return gulp.src(config.images.files)
+    .pipe(gulpIf(production, imageMin()))
+    .pipe(gulp.dest(
+      config.images.dest
+    ))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+
+gulp.task('templates', function () {
+    gulp.src(config.templates.files)
+    //.pipe(newer(config.templates.dest))
+    .pipe(gulp.dest(config.templates.dest))
+    .pipe(browserSync.reload({stream:true}));
 });
 
 
 // ['task', 'otherTask',...] runs watch after these tasks have completed
-gulp.task('watch', ['browserSync', 'sass'], function() {
-    gulp.watch('src/scss/styles.scss', ['sass']);
-    gulp.watch('src/index.html', browserSync.reload);
+gulp.task('watch', ['browserSync', 'styles'], function() {
+
+
+    if(!gulp.slurped){
+        gulp.watch("gulpfile.js", ["default"]);
+        gulp.watch(config.styles.files, ['styles']);
+        gulp.watch(config.scripts.files, ['scripts']);
+        gulp.watch(config.templates.files , ['templates']);
+        gulp.watch( config.root, browserSync.reload);
+        gulp.slurped = true;
+    }
+
+
 });
 
 
-// Start browserSync server
+/// task: BrowserSync
+// Description: Run BrowserSync server with disabled ghost mode
 gulp.task('browserSync', function() {
-    browserSync({
-        server: {
-            baseDir: 'src'
-        }
-    })
-})
+  browserSync({
+    server: {
+        baseDir: config.root
+    },
+    ghostMode: true,
+    open: "external"
+  });
+});
+
+
+gulp.task('default', ['styles', 'scripts', 'images', 'templates' ]);
