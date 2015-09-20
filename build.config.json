@@ -1,0 +1,59 @@
+{
+  "root": "public",
+  "deployment": {
+    "local": {
+      "path": "public"
+    },
+    "remote": {
+      "host": "YOUR HOST"
+    },
+    "rsync": {
+      "options": "-avzh --delete -e ssh"
+    }
+  },
+  "assets": {
+    "base": "source/",
+    "dest": "public/assets/"
+  },
+  "versioning": {
+    "files": [
+      "./package.json",
+      "./bower.json"
+    ]
+  },
+  "scripts": {
+    "base"  : "source/scripts/",
+    "files" : [
+      "source/scripts/**/*.js"
+    ],
+    "dest"  : "public/assets/scripts/"
+  },
+  "styles": {
+    "base" : "source/styles/",
+    "files": [
+      "source/styles/**/*.+(sass|scss)"
+    ],
+    "dest" : "public/assets/styles/"
+  },
+  "fonts": {
+    "base" : "source/fonts/",
+    "files": [
+      "source/fonts/**/*"
+    ],
+    "dest" : "public/assets/fonts/"
+  },
+  "images": {
+    "base" : "source/images/",
+    "files": [
+      "source/images/**/*"
+    ],
+    "dest" : "public/assets/images/"
+  },
+  "templates": {
+    "base" : "source/templates/",
+    "files": [
+      "source/templates/**/*.*"
+    ],
+    "dest" : "public/"
+  }
+}
