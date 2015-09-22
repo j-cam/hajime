@@ -17,6 +17,7 @@ var browserSync = require('browser-sync').create();
 
 
 // Gulp check for watcing this file
+// http://codepen.io/ScavaJripter/blog/how-to-watch-the-same-gulpfile-js-with-gulp
 gulp.slurped = false;
 
 // Trigger
