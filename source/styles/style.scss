@@ -1,67 +1,14 @@
-/*
-=========================================================================================
-	SASS ARCHITECTURE
-	directory naming based on a combination of
-	|-- patterlab-php
-	|--- https://github.com/pattern-lab/patternlab-php/tree/master/core/source/_patterns
- 	|-- SMACCS
- 	|--- https://github.com/minamarkham/sassy-starter
-=========================================================================================
-*/
 
-/*
-============================================
-	CSS/SASS STYLE GUIDE
-	Use BEM Syntax
-	Primer: https://css-tricks.com/bem-101/
-============================================
-	// Block component
-	.btn {}
-
-	// Element that depends upon the block
-	.btn__price {}
-
-	// Modifier that changes the style of the block
-	.btn--orange {}
-	.btn--big {}
-
-	// HTML
-	// <a class="btn btn--big btn--orange" href="http://css-tricks.com">
-	//   <span class="btn__price">$9.99</span>
-	//   <span class="btn__text">Subscribe</span>
-	// </a>
-
-	// ------------------------
-		SASS SHORTHAND BEM BLOCK
-	// ------------------------
-	// Block component
-	.block {
-
-	    // Element that depends upon the block
-	    &__element {
-	       //some styles here
-	    }
-
-		// Modifier that changes the style of the block
-	    &--mod {
-	       //some styles here
-	    }
-	}
-
-============================================== */
-
-/*
-==========================================
-	SASS IMPORTS
-==========================================
-*/
+// ==========================================
+//	SASS IMPORTS
+// ==========================================
 
 
-/* ------------------------------------------
-	UTILITIES
-
-	dynamic tools for generating output
---------------------------------------------- */
+// ------------------------------------------
+//	UTILITIES
+//
+//	dynamic tools for generating output
+// ---------------------------------------------
 @import "01-utilities/*";
 
 
@@ -74,15 +21,8 @@
 	It doesn’t include any class or ID selectors. It is defining the default
 	styling for how that element should look in all occurrences on the page.
 
-
 ------------------------------------ */
-// @import "02-base/basic-selectors";
-// @import "02-base/headings";
-// @import "02-base/lists";
-// @import "02-base/tables";
-// @import "02-base/form-inputs";
 @import "02-base/*";
-
 
 
 /* ------------------------------------------
@@ -97,8 +37,6 @@
 
 --------------------------------------------- */
 @import "03-layout/*";
-
-
 
 
 /* ----------------------------------------

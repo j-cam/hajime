@@ -35,30 +35,36 @@ gulp.task('clean', function () {
 
 // Task: Handle Sass and CSS
 gulp.task('styles', function() {
-    gulp.src(config.styles.files)
-        .pipe(sourcemaps.init())
+    gulp.src(
+            config.styles.files
+        )
+
         .pipe(cssGlobbing({
-            // Configure it to use SCSS files
             extensions: ['.scss', '.sass', '.css']
         }))
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', util.log))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
-        })) // Passes it through gulp-autoprefixer
-        .pipe(sass({outputStyle: 'compressed'}))
+        }))
+        .pipe(sass({
+            outputStyle: 'expanded'}
+        ))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(
             config.styles.dest
         ))
-        .pipe(browserSync.reload({stream:true}));
+        //.pipe(browserSync.reload({stream:true}));
 });
 
 
 
 // Task: Handle scripts
 gulp.task('scripts', function () {
-  return gulp.src(config.scripts.files)
+  return gulp.src(
+        config.scripts.files
+    )
     .pipe(concat(
       'main.js'
     ))
@@ -86,7 +92,7 @@ gulp.task('images', function () {
 
 gulp.task('templates', function () {
     gulp.src(config.templates.files)
-    //.pipe(newer(config.templates.dest))
+    .pipe(newer(config.templates.dest))
     .pipe(gulp.dest(config.templates.dest))
     .pipe(browserSync.reload({stream:true}));
 });
