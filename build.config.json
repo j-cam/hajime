@@ -1,5 +1,13 @@
 {
-  "root": "./public/",
+  "server": {
+    "host": "localhost",
+    "port": 3000,
+    "proxy": null,
+    "root": "public",
+    "files": ["public/**/*.css", "public/**/*.js", "public/**/*.html"],
+    "open": false
+  },
+
   "deployment": {
     "local": {
       "path": "public"
@@ -11,6 +19,7 @@
       "options": "-avzh --delete -e ssh"
     }
   },
+
   "assets": {
     "base": "source/",
     "dest": "public/assets/"
@@ -21,6 +30,7 @@
       "./bower.json"
     ]
   },
+
   "scripts": {
     "base"  : "source/scripts/",
     "files" : [
@@ -28,6 +38,7 @@
     ],
     "dest"  : "public/assets/scripts/"
   },
+
   "styles": {
     "base" : "source/styles/",
     "files": [
@@ -35,6 +46,7 @@
     ],
     "dest" : "public/assets/styles/"
   },
+
   "fonts": {
     "base" : "source/fonts/",
     "files": [
@@ -42,6 +54,7 @@
     ],
     "dest" : "public/assets/fonts/"
   },
+
   "images": {
     "base" : "source/images/",
     "files": [
@@ -49,6 +62,7 @@
     ],
     "dest" : "public/assets/images/"
   },
+
   "templates": {
     "base" : "source/templates/",
     "files": [

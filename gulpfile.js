@@ -13,7 +13,7 @@ var cssGlobbing = require('gulp-css-globbing');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var imageMin = require('gulp-imagemin');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 
 
 // Gulp check for watcing this file
@@ -23,11 +23,25 @@ gulp.slurped = false;
 var production = true;
 
 
-gulp.task('clean', function () {
-    // Clear the destination folder
-    gulp.src(config.root + '/**/*.*', { read: false })
-        .pipe(clean({ force: true }));
+browserSync.init({
+
+    server: config.server.root,
+    port: config.server.port,
+    proxy: config.server.proxy,
+    directory: false,
+    injectChanges: true,
+    files: config.server.files,
+    open: config.server.open
+
 });
+
+
+
+// gulp.task('clean', function () {
+//     // Clear the destination folder
+//     gulp.src(config.root + '/**/*.*', { read: false })
+//         .pipe(clean({ force: true }));
+// });
 
 
 
@@ -35,10 +49,9 @@ gulp.task('clean', function () {
 
 // Task: Handle Sass and CSS
 gulp.task('styles', function() {
-    gulp.src(
+    return gulp.src(
             config.styles.files
         )
-
         .pipe(cssGlobbing({
             extensions: ['.scss', '.sass', '.css']
         }))
@@ -55,7 +68,6 @@ gulp.task('styles', function() {
         .pipe(gulp.dest(
             config.styles.dest
         ))
-        //.pipe(browserSync.reload({stream:true}));
 });
 
 
@@ -75,7 +87,6 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(
       config.scripts.dest
     ))
-    .pipe(browserSync.reload({stream:true}));
 });
 
 
@@ -86,20 +97,18 @@ gulp.task('images', function () {
     .pipe(gulp.dest(
       config.images.dest
     ))
-    .pipe(browserSync.reload({stream:true}));
 });
 
 
 gulp.task('templates', function () {
-    gulp.src(config.templates.files)
+    return gulp.src(config.templates.files)
     .pipe(newer(config.templates.dest))
     .pipe(gulp.dest(config.templates.dest))
-    .pipe(browserSync.reload({stream:true}));
 });
 
 
 // ['task', 'otherTask',...] runs watch after these tasks have completed
-gulp.task('watch', ['browserSync', 'styles'], function() {
+gulp.task('watch', function() {
 
 
     if(!gulp.slurped){
@@ -107,7 +116,9 @@ gulp.task('watch', ['browserSync', 'styles'], function() {
         gulp.watch(config.styles.files, ['styles']);
         gulp.watch(config.scripts.files, ['scripts']);
         gulp.watch(config.templates.files , ['templates']);
-        gulp.watch( config.root, browserSync.reload);
+        browserSync.watch(config.server.files).on('change', function (file) {
+            browserSync.notify(file + ' changed', 5000);
+        });
         gulp.slurped = true;
     }
 
@@ -115,17 +126,9 @@ gulp.task('watch', ['browserSync', 'styles'], function() {
 });
 
 
-/// task: BrowserSync
-// Description: Run BrowserSync server with disabled ghost mode
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-        baseDir: config.root
-    },
-    ghostMode: true,
-    open: "external"
-  });
-});
+
+
+
 
 
 gulp.task('default', ['styles', 'scripts', 'images', 'templates' ]);
