@@ -1,1 +1,3 @@
-console.log('Aight, let\'s roll out!');
+var $ = require('jquery');
+
+require('./modules/console.js');

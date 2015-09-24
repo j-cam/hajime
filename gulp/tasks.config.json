@@ -33,6 +33,7 @@
 
   "scripts": {
     "base"  : "source/scripts/",
+    "entry" : "source/scripts/main.js",
     "files" : [
       "source/scripts/**/*.js"
     ],
@@ -58,7 +59,7 @@
   "images": {
     "base" : "source/images/",
     "files": [
-      "source/images/**/*"
+      "source/images/**/*.+(png|jpg|gif|svg)"
     ],
     "dest" : "public/assets/images/"
   },
