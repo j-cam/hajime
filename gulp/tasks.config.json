@@ -65,9 +65,9 @@
   },
 
   "templates": {
-    "base" : "source/templates/",
+    "base" : "source/templates/nunjucks",
     "files": [
-      "source/templates/**/*.*"
+      "source/templates/pages/**/*.+(html|nunjucks)"
     ],
     "dest" : "public/"
   }
