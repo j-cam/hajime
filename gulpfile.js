@@ -10,8 +10,9 @@ gulp.task('default', function()
 {
     runSequence(
         [
-        'scripts',
         'styles',
+        'scripts',
+        'scripts:copy',
         'templates',
         'images',
         'fonts'
@@ -28,6 +29,7 @@ gulp.task('build', function()
         'clean',
         [
         'scripts',
+        'scripts:copy',
         'styles',
         'templates',
         'images',

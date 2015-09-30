@@ -3,14 +3,14 @@
     "host": "localhost",
     "port": 3000,
     "proxy": null,
-    "root": "public",
-    "files": ["public/**/*.css", "public/**/*.js", "public/**/*.html"],
+    "root": "dist",
+    "files": ["dist/**/*.css", "dist/**/*.js", "dist/**/*.html"],
     "open": false
   },
 
   "deployment": {
     "local": {
-      "path": "public"
+      "path": "dist"
     },
     "remote": {
       "host": "YOUR HOST"
@@ -21,8 +21,8 @@
   },
 
   "assets": {
-    "base": "source/",
-    "dest": "public/assets/"
+    "base": "src/",
+    "dest": "dist/assets/"
   },
   "versioning": {
     "files": [
@@ -32,43 +32,43 @@
   },
 
   "scripts": {
-    "base"  : "source/scripts/",
-    "main" : "source/scripts/main.js",
+    "base"  : "src/scripts/",
+    "main" : "src/scripts/main.js",
     "copy" : [
-      "source/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"
+      "src/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"
     ],
-    "dest"  : "public/assets/scripts/"
+    "dest"  : "dist/assets/scripts/"
   },
 
   "styles": {
-    "base" : "source/styles/",
+    "base" : "src/styles/",
     "files": [
-      "source/styles/**/*.+(sass|scss)"
+      "src/styles/**/*.+(sass|scss)"
     ],
-    "dest" : "public/assets/styles/"
+    "dest" : "dist/assets/styles/"
   },
 
   "fonts": {
-    "base" : "source/fonts/",
+    "base" : "src/fonts/",
     "files": [
-      "source/fonts/**/*"
+      "src/fonts/**/*"
     ],
-    "dest" : "public/assets/fonts/"
+    "dest" : "dist/assets/fonts/"
   },
 
   "images": {
-    "base" : "source/images/",
+    "base" : "src/images/",
     "files": [
-      "source/images/**/*.+(png|jpg|gif|svg)"
+      "src/images/**/*.+(png|jpg|gif|svg)"
     ],
-    "dest" : "public/assets/images/"
+    "dest" : "dist/assets/images/"
   },
 
   "templates": {
-    "base" : "source/templates/nunjucks",
+    "base" : "src/templates/nunjucks",
     "files": [
-      "source/templates/pages/**/*.+(html|nunjucks)"
+      "src/templates/pages/**/*.+(html|nunjucks)"
     ],
-    "dest" : "public/"
+    "dest" : "dist/"
   }
 }
