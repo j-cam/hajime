@@ -1,3 +1,3 @@
 var $ = require('jquery');
 
-require('./modules/console.js');
+require('./modules/plugins.js');

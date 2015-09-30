@@ -33,9 +33,9 @@
 
   "scripts": {
     "base"  : "source/scripts/",
-    "entry" : "source/scripts/main.js",
-    "files" : [
-      "source/scripts/**/*.js"
+    "main" : "source/scripts/main.js",
+    "copy" : [
+      "source/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"
     ],
     "dest"  : "public/assets/scripts/"
   },

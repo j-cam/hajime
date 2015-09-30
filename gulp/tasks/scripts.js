@@ -14,7 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('scripts', function () {
 
-  return browserify(config.scripts.entry).bundle()
+  return browserify(config.scripts.main).bundle()
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('main.js'))
     .pipe(buffer())
@@ -26,3 +26,8 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(config.scripts.dest));
 });
 
+gulp.task('scripts:copy', function () {
+
+    return gulp.src(config.scripts.copy)
+    .pipe(gulp.dest(config.scripts.dest + 'vendor'));
+});
