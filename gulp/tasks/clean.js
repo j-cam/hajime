@@ -7,6 +7,6 @@ var del = require('del');
 var cache = require('gulp-cache');
 
 gulp.task('clean', function(callback){
-  del(config.server.root);
+  del(config.server.root + '/**/*', callback);
   return cache.clearAll(callback);
 });

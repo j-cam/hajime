@@ -69,6 +69,6 @@
     "files": [
       "src/templates/pages/**/*.+(html|nunjucks)"
     ],
-    "dest" : "dist/"
+    "dest" : "dist"
   }
 }
