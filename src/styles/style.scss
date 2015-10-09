@@ -2,13 +2,31 @@
 // ==========================================
 //	SASS IMPORTS
 // ==========================================
+@import "variables";
+
+@import 'vendor/animate-scss/animate';
+@import 'vendor/gulp-spritesmith';
+
+// Spritesmith generated mixins
+// For: @images image-name.png,image-name@2x.png
+//
+// @sprite: @include sprite($image-name);
+// @retina-sprite: @include sprite($image-name-group);
+//
+// Generate sprite rules and media queries
+@include retina-sprites($retina-groups);
 
 // ------------------------------------------
-//	UTILITIES
+//	LIB
 //
-//	dynamic tools for generating output
+//	Utilities & Tools for generating output
 // ---------------------------------------------
-@import "01-utilities/*";
+@import "lib/fonts";
+@import "lib/functions";
+@import "lib/mixins";
+@import "lib/placeholders";
+@import "lib/utils";
+@import "lib/debug";
 
 
 /* ---------------------------------
@@ -21,7 +39,11 @@
 	styling for how that element should look in all occurrences on the page.
 
 ------------------------------------ */
-@import "02-base/*";
+@import "base/base";
+@import "base/headings";
+@import "base/lists";
+@import "base/forms";
+@import "base/tables";
 
 
 /* ------------------------------------------
@@ -35,7 +57,9 @@
 	where appropriate.
 
 --------------------------------------------- */
-@import "03-layout/*";
+@import "layout/grid";
+@import "layout/structure";
+
 
 
 /* ----------------------------------------
@@ -58,7 +82,7 @@
 	number of elements and there is likely to be a desire to use descendent
 	or child selectors to target those elements.
 ------------------------------------------- */
-@import "04-modules/*";
+@import "modules/nav";
 
 
 
