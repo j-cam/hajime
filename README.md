@@ -9,16 +9,13 @@ Run `npm install` then run `gulp` from inside the project folder you just create
 
 ## Todos
 
-- ~~~Add boilerplate JS stuffs
-  - ~~Modernizr
 - Flesh out the readme...
 
 
-## Considering adding to Gulp
+## Considering
 
 - [Clean-CSS](https://github.com/jakubpawlowicz/clean-css)
-  - [Combine media queries](http://stackoverflow.com/a/30385280/538696)
-- [Gulp-devtools](https://github.com/jakubpawlowicz/clean-css)
+
 
 ### References & Resources
 - [HTML5 Test Page](https://github.com/cbracco/html5-test-page)
