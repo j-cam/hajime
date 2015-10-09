@@ -33,6 +33,7 @@
 
   "scripts": {
     "base"  : "src/scripts/",
+    "files" : "src/scripts/**/*.js",
     "main" : "src/scripts/main.js",
     "copy" : [
       "src/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"
@@ -55,18 +56,26 @@
     ],
     "dest" : "dist/assets/fonts/"
   },
+  "sprites": {
+    "base": "src/images/sprites/",
+    "filesSrc": "src/images/sprites/*.+(png|jpg|gif)",
+    "filesDest": "src/images/sprites/*.+(png|jpg|gif)",
+    "sassDest": "src/styles/vendor/"
+  },
 
   "images": {
     "base" : "src/images/",
     "files": [
-      "src/images/**/*.+(png|jpg|gif|svg)"
+      "src/images/*"
     ],
     "dest" : "dist/assets/images/"
   },
 
   "templates": {
-    "base" : "src/templates/nunjucks",
-    "files": [
+    "base" : "src/templates/",
+    "files" : "src/templates/**/*/*.+(html|nunjucks)",
+    "src" : "src/templates/nunjucks/",
+    "pages": [
       "src/templates/pages/**/*.+(html|nunjucks)"
     ],
     "dest" : "dist"

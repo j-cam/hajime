@@ -14,6 +14,7 @@ var browserSync = require('browser-sync');
 gulp.task('watch', function() {
 
   gulp.watch("gulpfile.js", ["default"]);
+  gulp.watch(config.images.files, ['images']);
   gulp.watch(config.styles.files, ['styles']);
   gulp.watch(config.scripts.files, ['scripts']);
   gulp.watch(config.templates.files , ['templates']);

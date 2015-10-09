@@ -1,5 +1,6 @@
 // Requiring Gulp
 var gulp = require('gulp');
+var size = require('gulp-size');
 var runSequence = require('run-sequence');
 //var config = require('./tasks.config.json');
 var requireDir = require('require-dir');
@@ -10,10 +11,11 @@ gulp.task('default', function()
 {
     runSequence(
         [
-        'styles',
+        'sprites',
+        'templates',
         'scripts',
         'scripts:copy',
-        'templates',
+        'styles',
         'images',
         'fonts'
         ],
@@ -28,10 +30,11 @@ gulp.task('build', function()
     runSequence(
         'clean',
         [
+        'sprites',
+        'templates',
         'scripts',
         'scripts:copy',
         'styles',
-        'templates',
         'images',
         'fonts'
         ]

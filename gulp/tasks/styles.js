@@ -1,10 +1,11 @@
 'use strict';
 
 var gulp = require('gulp');
+var size = require('gulp-size');
 var config = require('../tasks.config.json');
 
 var sass = require('gulp-sass');
-var cssGlobbing = require('gulp-css-globbing');
+var groupmq = require('gulp-group-css-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
@@ -15,11 +16,8 @@ gulp.task('styles', function() {
     return gulp.src(
             config.styles.files
         )
-        .pipe(cssGlobbing({
-            extensions: ['.scss', '.sass', '.css']
-        }))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', gutil.log))
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -27,8 +25,10 @@ gulp.task('styles', function() {
         .pipe(sass({
             outputStyle: 'expanded'}
         ))
-        .pipe(sourcemaps.write())
+        .pipe(groupmq())
+        .pipe(sourcemaps.write('../maps'))
         .pipe(gulp.dest(
             config.styles.dest
         ))
+        .pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
 });
