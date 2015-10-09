@@ -10,13 +10,6 @@ Run `npm install` then run `gulp` from inside the project folder you just create
 ## Todos
 
 - Flesh out the readme...
+- Trim fat from SASS
+- Browserify might be overkill
 
-
-## Considering
-
-- [Clean-CSS](https://github.com/jakubpawlowicz/clean-css)
-
-
-### References & Resources
-- [HTML5 Test Page](https://github.com/cbracco/html5-test-page)
-- [Spreading Gulp tasks into multiple files](https://medium.com/@_rywar/spreading-gulp-tasks-into-multiple-files-2f63d8c959d5)
