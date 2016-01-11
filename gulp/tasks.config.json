@@ -44,7 +44,7 @@
   "styles": {
     "base" : "src/styles/",
     "files": [
-      "src/styles/**/*.+(sass|scss)"
+      "src/styles/**/*.+(css)"
     ],
     "dest" : "dist/assets/styles/"
   },
