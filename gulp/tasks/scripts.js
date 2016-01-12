@@ -6,7 +6,6 @@ var config = require('../tasks.config.json');
 
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
-var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');

@@ -6,18 +6,21 @@ var config = require('../tasks.config.json');
 
 var gulpif = require('gulp-if');
 // var sass = require('gulp-sass');
+var precss = require('precss');
 var postcss = require('gulp-postcss');
-var atImport = require('postcss-import');
+
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 var mqpacker = require('css-mqpacker');
-var cssnano = require('cssnano');
-var sprites = require('postcss-sprites');
+
+// var cssnano = require('cssnano');
+// var sprites = require('postcss-sprites');
 // var groupmq = require('gulp-group-css-media-queries');
-// var autoprefixer = require('gulp-autoprefixer');
-// var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 
 var processors = [
-    atImport
+    precss(),
+
 ];
 // var opts    = {
 //     stylesheetPath: './dist',
@@ -36,22 +39,23 @@ gulp.task('styles', function() {
     return gulp.src(
             config.styles.files
         )
-        // .pipe(sourcemaps.init())
-        .pipe(postcss(processors))
+        .pipe(sourcemaps.init())
+        .pipe(
+            postcss([
+                require('precss')({ /* options */ })
+            ])
+        )
 
 
         // .pipe(sass().on('error', sass.logError))
-        // .pipe(autoprefixer({
-        //     browsers: ['last 2 versions'],
-        //     cascade: false
-        // }).on('error', sass.logError))
+
         // .pipe(sass({
         //     outputStyle: 'expanded'}
         // ).on('error', sass.logError))
         // Combine media queries jacks up sourcemaps
         // change the environment flag in config to run
         // .pipe( gulpif(config.environment.production, groupmq()))
-        // .pipe( sourcemaps.write('../maps'))
+        .pipe( sourcemaps.write('../maps'))
         .pipe( gulp.dest(
             config.styles.dest
         ))
