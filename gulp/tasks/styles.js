@@ -3,61 +3,44 @@
 var gulp = require('gulp');
 var size = require('gulp-size');
 var config = require('../tasks.config.json');
-
+var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
-// var sass = require('gulp-sass');
-var precss = require('precss');
+var sourcemaps = require('gulp-sourcemaps');
+
 var postcss = require('gulp-postcss');
 
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
+var lost = require('lost');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 var mqpacker = require('css-mqpacker');
+var cssnext = require('postcss-cssnext');
+var precss = require('precss');
+var reporter = require('postcss-reporter');
+var browserReporter = require('postcss-browser-reporter');
 
-// var cssnano = require('cssnano');
-// var sprites = require('postcss-sprites');
-// var groupmq = require('gulp-group-css-media-queries');
-var gutil = require('gulp-util');
 
-var processors = [
-    precss(),
-
-];
-// var opts    = {
-//     stylesheetPath: './dist',
-//     spritePath    : './dist/images/sprite.png',
-//     retina        : true
-// };
-
-// postcss(sprites(opts))
-//     .process(css, { from: './src/app.css', to: './dist/app.css' })
-//     .then(function (result) {
-//         fs.writeFileSync('./dist/app.css', result.css);
-//     });
 
 // Task: Handle Sass and CSS
 gulp.task('styles', function() {
-    return gulp.src(
-            config.styles.files
-        )
+    var processors = [
+      lost,
+      autoprefixer({browsers: ['last 2 versions']}),
+      cssnext,
+      precss,
+      mqpacker,
+      cssnano,
+      reporter,
+      browserReporter
+    ];
+
+    return gulp.src( config.styles.files )
         .pipe(sourcemaps.init())
-        .pipe(
-            postcss([
-                require('precss')({ /* options */ })
-            ])
-        )
+        .pipe(postcss(processors))
 
-
-        // .pipe(sass().on('error', sass.logError))
-
-        // .pipe(sass({
-        //     outputStyle: 'expanded'}
-        // ).on('error', sass.logError))
         // Combine media queries jacks up sourcemaps
         // change the environment flag in config to run
         // .pipe( gulpif(config.environment.production, groupmq()))
         .pipe( sourcemaps.write('../maps'))
-        .pipe( gulp.dest(
-            config.styles.dest
-        ))
+        .pipe( gulp.dest(config.styles.dest))
         //.pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
 });
