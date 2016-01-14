@@ -1,23 +1,23 @@
-// ==========================================================================
-// Helper Classes
-// ==========================================================================
+/* ========================================================================== */
+/* Helper Classes */
+/* ========================================================================== */
 
 %all-caps {
   font-weight: 600;
-  // letter-spacing: .06em;
+  /* letter-spacing: .06em; */
   text-transform: uppercase;
 }
 
-//  clearfix
+/*  clearfix */
 %clearfix {
   *zoom:1;
   &:before, &:after { content: " "; display: table; }
   &:after { clear: both; }
 }
 
-// ==========================================================================
-// Image replacement
-// ==========================================================================
+/* ========================================================================== */
+/* Image replacement */
+/* ========================================================================== */
 
 %ir {
   background-color: transparent;
@@ -39,8 +39,8 @@
   padding-left: 0;
 }
 
-// make sure container is [position: relative]
-// http://codepen.io/shshaw/full/gEiDt
+/* make sure container is [position: relative] */
+/* http://codepen.io/shshaw/full/gEiDt */
 %absolute-center {
   width: 50%;
   height: 50%;
@@ -50,14 +50,14 @@
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
-// Hide from both screenreaders and browsers: h5bp.com/u
+/* Hide from both screenreaders and browsers: h5bp.com/u */
 
 %hidden {
   display: none !important;
   visibility: hidden;
 }
 
-// Hide only visually, but have it available for screenreaders: h5bp.com/v
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
 
 %visuallyhidden {
   border: 0;
@@ -69,8 +69,8 @@
   position: absolute;
   width: 1px;
 
-  // Extends the .visuallyhidden class to allow the element to be focusable
-  // when navigated to via the keyboard: h5bp.com/p
+  /* Extends the .visuallyhidden class to allow the element to be focusable */
+  /* when navigated to via the keyboard: h5bp.com/p */
 
   &.focusable:active,
   &.focusable:focus {
@@ -83,7 +83,7 @@
   }
 }
 
-// Hide visually and from screenreaders, but maintain layout
+/* Hide visually and from screenreaders, but maintain layout */
 
 %invisible {
   visibility: hidden;

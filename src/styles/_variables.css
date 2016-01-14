@@ -1,0 +1,79 @@
+/*  ================================================================
+    FONT FAMILIES
+================================================================= */
+
+$sans: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$serif: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+
+$font_headings: $sans;
+$font_body: $serif;
+
+/*  ================================================================
+    FONT SIZES
+================================================================= */
+$font_size_base: 16px;
+$rem_base: $font_size_base;
+$line_height_base: 1em;
+
+$font_size_h1: 2.5em;
+$font_size_h2: 1.75em;
+$font_size_h3: 1.5em;
+$font_size_h4: 1.25em;
+$font_size_h5: 1.17em;
+$font_size_h6: 1.12em;
+
+
+
+/*  ================================================================
+    PSD FILE WIDTH
+    Used as context for calculating top/bottom margin percentages
+================================================================= */
+$psd_file_width: 1400px;
+$psd: $psd_file_width;
+
+
+/*  ================================================================
+    Color Scheme
+    Examples based on the official Sass styleguide.
+================================================================= */
+
+/* Selections */
+$color_selection: #b3d4fc;
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
+
+/* Borders */
+$color_border:  #eee;
+
+
+/*  ================================================================
+    Breakpoints
+    There are no common breakpoints, so you'll need to define
+    your own breakpoints to suit your design.
+================================================================= */
+$tablet:  768px;
+$desktop: 980px;
+
+$mobile_small                 : 240;
+$mobile_large                 : 320;
+$tablet_small                 : 480;
+$tablet_large                 : 768;
+$screen_small                 : 1024;
+$screen_large                 : 1280;
+
+/*  ================================================================
+    Z-indexs
+================================================================= */
+
+$zindex: (
+  modal                       : 9000,
+  overlay                     : 8000,
+  dropdown                    : 7000,
+  header                      : 6000,
+  footer                      : 5000
+);
