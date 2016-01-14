@@ -1,6 +1,6 @@
 # hajime
 
-A boilerplate/toolkit that makes use of Gulp, PostCSS and Nunjucks to help get new front-end projects up and running quickly. 
+A boilerplate/toolkit that makes use of Gulp, PostCSS, and Nunjucks to help get new front-end projects up and running quickly. 
 
 ## Setup
 
