@@ -32,7 +32,7 @@ gulp.task('styles', function() {
         reporter(),
     ];
 
-    return gulp.src( config.styles.files )
+    return gulp.src( config.styles.main )
         .pipe(sourcemaps.init())
         .pipe(postcss(processors).on('error', gutil.log))
         .pipe(cssnano({
