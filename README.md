@@ -9,7 +9,4 @@ Run `npm install` then run `gulp` from inside the project folder you just create
 
 ## Todos
 
-- Flesh out the readme...
-- Trim fat from SASS
-- Browserify might be overkill
 
