@@ -43,8 +43,9 @@
 
   "styles": {
     "base" : "src/styles/",
+    "main" : "src/styles/style.css",
     "files": [
-      "src/styles/**/*.+(sass|scss)"
+      "src/styles/**/*.css"
     ],
     "dest" : "dist/assets/styles/"
   },

@@ -1,4 +1,4 @@
-    <div id="top" class="page" role="document">
+    <div id="top" class="page html5-tags" role="document">
         <header role="banner">
             <h1>はじめ (Ha-ji-mé)</h1>
             <p>A boilerplate for helping to begin front-end production sooner.</p>
@@ -48,13 +48,11 @@
 
         <main role="main">
             <section id="text">
-                <header><h1>Text</h1></header>
-
                 <article id="text__headings">
                     <header>
                         <h1>Headings</h1>
                     </header>
-
+                    <hr>
                     <div>
                         <h1>Heading 1</h1>
                         <h2>Heading 2</h2>

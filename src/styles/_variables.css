@@ -1,0 +1,92 @@
+/*  ================================================================
+    Breakpoints
+    There are no common breakpoints, so you'll need to define
+    your own breakpoints to suit your design.
+================================================================= */
+
+$mobile_small: 240px;
+$mobile_large: 320px;
+$tablet_small: 480px;
+$tablet_large: 768px;
+$screen_small: 1024px;
+$screen_large: 1280px;
+
+
+/*  ================================================================
+    FONT FAMILIES
+================================================================= */
+
+$sans: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+$serif: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+
+$font_headings: $sans;
+$font_body: $serif;
+
+/*  ================================================================
+    FONT SIZES
+================================================================= */
+$font_size_base: 16px;
+$font_size_base_min: 12px;
+
+$line_height_base: 1.4;
+
+$font_size_h1:      32px;
+$font_size_h1_min:  24px;
+
+$font_size_h2:      26px;
+$font_size_h2_min:  20px;
+
+$font_size_h3:      20px;
+$font_size_h3_min:  16px;
+
+$font_size_h4:      16px;
+$font_size_h4_min:  12px;
+
+$font_size_h5:      12px;
+$font_size_h5_min:  12px;
+
+$font_size_h6:      12px;
+$font_size_h6_min:  12px;
+
+
+
+
+
+
+/*  ================================================================
+    PSD FILE WIDTH
+    Used as context for calculating top/bottom margin percentages
+================================================================= */
+$psd_file_width: 1400px;
+$psd: $psd_file_width;
+
+
+/*  ================================================================
+    Color Scheme
+    Examples based on the official Sass styleguide.
+================================================================= */
+
+/* Selections */
+$color_selection: #b3d4fc;
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
+
+/* Borders */
+$color_border:  #eee;
+
+
+
+
+/*  ================================================================
+    Z-indexs
+================================================================= */
+$z_index_modal                       : 9000;
+$z_index_overlay                     : 8000;
+$z_index_dropdown                    : 7000;
+$z_index_header                      : 6000;
+$z_index_footer                      : 5000;

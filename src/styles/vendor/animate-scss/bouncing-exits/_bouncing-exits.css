@@ -1,9 +1,8 @@
-// INDEX OF BOUNCING EXITS
+/*// INDEX OF BOUNCING EXITS */
 
-@import 
+@import
   "_bounceOut",
   "_bounceOutDown",
   "_bounceOutLeft",
   "_bounceOutRight",
   "_bounceOutUp";
-  
