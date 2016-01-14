@@ -1,7 +1,5 @@
+/* prevent phone numbers looking twice as large and having a Skype highlight */
 
-
-// prevent phone numbers looking twice as large and having a Skype highlight
-//
 span.skype_pnh_container {
     display: none !important;
 }

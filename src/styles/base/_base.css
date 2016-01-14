@@ -1,5 +1,4 @@
 html, body {
-	//overflow: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -12,12 +11,13 @@ html {
 
 body  {
 	height: 100%;
-	font-family: $sans_serif;
+	font-family: $font_body;
 	color: #000;
-	font-size: em(16px);
-	line-height: line-height( 16px, 22px);
+	font-size: responsive $font_size_base_min $font_size_base;
+
+	line-height: $line_height_base;
 	word-wrap: break-word;
-	// typekit rendering fixes for osx
+	/* typekit rendering fixes for osx */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale; /* Firefox 25+ */
 
@@ -32,9 +32,9 @@ body  {
 
 
 p {
-	font-family: $serif;
+	font-family: $font_body;
 	margin-top: 0;
-	margin-bottom: em(15px);
+	margin-bottom: 1em;
 }
 
 strong {
@@ -65,9 +65,8 @@ hr {
 	width:100%;
 	height: 0;
 	display: block;
-    border: 0;
-	border-top: 1px solid #d4d4d2;
-    border-top: 1px solid rgba(212, 212, 210, 1.0);
+	border: 0;
+	border-top: 1px solid $color_border;
 }
 
 blockquote, q, i , em {

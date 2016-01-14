@@ -3,35 +3,43 @@
 var gulp = require('gulp');
 var size = require('gulp-size');
 var config = require('../tasks.config.json');
-
-var gulpif = require('gulp-if');
-var sass = require('gulp-sass');
-var groupmq = require('gulp-group-css-media-queries');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
+var gulpif = require('gulp-if');
+var sourcemaps = require('gulp-sourcemaps');
+var cssnano = require('gulp-cssnano');
+
+var postcss = require('gulp-postcss');
+
+var lost = require('lost');
+var autoprefixer = require('autoprefixer');
+var mqpacker = require('css-mqpacker');
+var rucksack = require('rucksack-css');
+var precss = require('precss');
+var reporter = require('postcss-reporter');
+var browserReporter = require('postcss-browser-reporter');
+
 
 
 // Task: Handle Sass and CSS
 gulp.task('styles', function() {
-    return gulp.src(
-            config.styles.files
-        )
+
+    var processors = [
+        precss,
+        rucksack,
+        lost,
+        mqpacker,
+        autoprefixer({browsers: ['last 2 versions']}),
+        reporter(),
+    ];
+
+    return gulp.src( config.styles.main )
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }).on('error', sass.logError))
-        .pipe(sass({
-            outputStyle: 'expanded'}
-        ).on('error', sass.logError))
-        // Combine media queries jacks up sourcemaps
-        // change the environment flag in config to run
-        .pipe( gulpif(config.environment.production, groupmq()))
+        .pipe(postcss(processors).on('error', gutil.log))
+        .pipe(cssnano({
+            discardComments: { removeAll: false }
+        })).on('error', gutil.log)
+        //.pipe( gulpif(config.environment.production, cssnano({discardComments: {removeAll: true}})).on('error', gutil.log)))
         .pipe( sourcemaps.write('../maps'))
-        .pipe( gulp.dest(
-            config.styles.dest
-        ))
+        .pipe( gulp.dest(config.styles.dest))
         .pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
 });
