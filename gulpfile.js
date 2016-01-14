@@ -11,7 +11,7 @@ gulp.task('default', function()
 {
     runSequence(
         [
-        'sprites',
+
         'templates',
         'scripts',
         'scripts:copy',
@@ -30,7 +30,7 @@ gulp.task('build', function()
     runSequence(
         'clean',
         [
-        'sprites',
+
         'templates',
         'scripts',
         'scripts:copy',
