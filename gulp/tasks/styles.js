@@ -6,14 +6,14 @@ var config = require('../tasks.config.json');
 var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
 var sourcemaps = require('gulp-sourcemaps');
+var cssnano = require('gulp-cssnano');
 
 var postcss = require('gulp-postcss');
 
 var lost = require('lost');
 var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
 var mqpacker = require('css-mqpacker');
-var cssnext = require('postcss-cssnext');
+var rucksack = require('rucksack-css');
 var precss = require('precss');
 var reporter = require('postcss-reporter');
 var browserReporter = require('postcss-browser-reporter');
@@ -22,25 +22,24 @@ var browserReporter = require('postcss-browser-reporter');
 
 // Task: Handle Sass and CSS
 gulp.task('styles', function() {
+
     var processors = [
-      lost,
-      autoprefixer({browsers: ['last 2 versions']}),
-      cssnext,
-      precss,
-      mqpacker,
-      cssnano,
-      reporter,
-      browserReporter
+        precss,
+        rucksack,
+        lost,
+        mqpacker,
+        autoprefixer({browsers: ['last 2 versions']}),
+        reporter(),
     ];
 
     return gulp.src( config.styles.files )
         .pipe(sourcemaps.init())
-        .pipe(postcss(processors))
-
-        // Combine media queries jacks up sourcemaps
-        // change the environment flag in config to run
-        // .pipe( gulpif(config.environment.production, groupmq()))
+        .pipe(postcss(processors).on('error', gutil.log))
+        .pipe(cssnano({
+            discardComments: { removeAll: false }
+        })).on('error', gutil.log)
+        //.pipe( gulpif(config.environment.production, cssnano({discardComments: {removeAll: true}})).on('error', gutil.log)))
         .pipe( sourcemaps.write('../maps'))
         .pipe( gulp.dest(config.styles.dest))
-        //.pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
+        .pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
 });
