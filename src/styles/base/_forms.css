@@ -11,7 +11,7 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
-	@include font-size($base_font_size);
+	font-size: responsive $font_size_base_min $font_size_base;
 	font-family: inherit;
 	color: inherit;
 	border: 1px solid $color_border;

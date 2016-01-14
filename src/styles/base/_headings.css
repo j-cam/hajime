@@ -14,25 +14,25 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	font-size: $font_size_h1;
+	font-size: responsive $font_size_h1_min $font_size_h1;
 }
 
 h2  {
-	font-size: $font_size_h2;
+	font-size: responsive $font_size_h2_min $font_size_h2;
 }
 
 h3 {
-	font-size: $font_size_h3;
+	font-size: responsive $font_size_h3_min $font_size_h3;
 }
 
 h4 {
-	font-size: $font_size_h4;
+	font-size: responsive $font_size_h4_min $font_size_h4;
 }
 
 h5 {
-	font-size: $font_size_h5;
+	font-size: responsive $font_size_h5_min $font_size_h5;
 }
 
 h6 {
-	font-size: $font_size_h6;
+	font-size: responsive $font_size_h6_min $font_size_h6;
 }

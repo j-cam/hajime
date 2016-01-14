@@ -13,7 +13,8 @@ body  {
 	height: 100%;
 	font-family: $font_body;
 	color: #000;
-	font-size: $font_size_base;
+	font-size: responsive $font_size_base_min $font_size_base;
+
 	line-height: $line_height_base;
 	word-wrap: break-word;
 	/* typekit rendering fixes for osx */
@@ -66,7 +67,6 @@ hr {
 	display: block;
 	border: 0;
 	border-top: 1px solid $color_border;
-	border-top: 1px solid rgba(212, 212, 210, 1.0);
 }
 
 blockquote, q, i , em {
