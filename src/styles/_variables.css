@@ -85,11 +85,8 @@ $color_border:  #eee;
 /*  ================================================================
     Z-indexs
 ================================================================= */
-
-$zindex: (
-  modal                       : 9000,
-  overlay                     : 8000,
-  dropdown                    : 7000,
-  header                      : 6000,
-  footer                      : 5000
-);
+$z_index_modal                       : 9000;
+$z_index_overlay                     : 8000;
+$z_index_dropdown                    : 7000;
+$z_index_header                      : 6000;
+$z_index_footer                      : 5000;
