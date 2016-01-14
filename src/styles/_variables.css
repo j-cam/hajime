@@ -13,7 +13,7 @@ $font_body: $serif;
 ================================================================= */
 $font_size_base: 16px;
 $rem_base: $font_size_base;
-$line_height_base: 1em;
+$line_height_base: 1.4;
 
 $font_size_h1: 2.5em;
 $font_size_h2: 1.75em;

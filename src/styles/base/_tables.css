@@ -13,9 +13,6 @@ table {
     thead {
 
       th {
-        text-transform: uppercase;
-        padding:1.387em;
-        vertical-align: middle;
         border-right:1px solid $color_border;
         border-bottom:1px solid $color_border;
       }

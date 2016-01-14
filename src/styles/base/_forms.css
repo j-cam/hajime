@@ -15,7 +15,6 @@ textarea {
 	font-family: inherit;
 	color: inherit;
 	border: 1px solid $color_border;
-	border-radius: 3px;
 
 	&:focus {
 		color: inherit;
