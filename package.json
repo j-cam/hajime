@@ -32,7 +32,6 @@
     "gulp-autoprefixer": "^2.3.1",
     "gulp-cache": "^0.3.0",
     "gulp-concat": "^2.6.0",
-    "gulp-css-globbing": "^0.1.8",
     "gulp-group-css-media-queries": "^1.1.0",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
