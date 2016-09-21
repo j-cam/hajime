@@ -1,4 +1,9 @@
 {
+  "environment": {
+      "production": true,
+      "development": false
+  },
+
   "server": {
     "host": "localhost",
     "port": 3000,

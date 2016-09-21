@@ -1,0 +1,14 @@
+/**
+ * Wait for typekit to load and then show fade in the site
+ * Source: https://richardkall.se/avoid-flash-of-unstyled-text-using-css-transitions/
+ */
+#site {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+}
+
+.wf-loading #site {
+  opacity: 0;
+  transform: translateY(0);
+}
