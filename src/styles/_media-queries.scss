@@ -2,23 +2,7 @@
  * Breakpoints
  * @type {[type]}
  */
-// Values
-$bp_desktop_xlarge: 1300px;
-$bp_desktop_large:  1050px;
-$bp_desktop_medium: 980px;
-$bp_desktop_small:  900px;
-$bp_desktop_xsmall: 800px;
-
-$bp_desktop:        769px;
-$bp_tablet:         768px;
-$bp_below_tablet:   $bp_tablet - 1px;
-
-$bp_mobile_xlarge:  650px;
-$bp_mobile_large:   600px; // Buttons go 100%;
-$bp_mobile_medium:  550px;
-$bp_mobile_small:   414px;// iPhone 6plus
-$bp_mobile_xsmall:  375px;// iPhone 6
-$bp_mobile_tiny:    320px;// iPhone 5
+// Set the $bp_[name] values in the variables file
 
 
 // Declarations

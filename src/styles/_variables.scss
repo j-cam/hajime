@@ -1,99 +1,3 @@
-/*  ================================================================
-    Breakpoints
-    There are no common breakpoints, so you'll need to define
-    your own breakpoints to suit your design.
-================================================================= */
-
-$mobile_small: 240px;
-$mobile_large: 320px;
-$tablet_small: 480px;
-$tablet_large: 768px;
-$screen_small: 1024px;
-$screen_large: 1280px;
-
-
-/*  ================================================================
-    FONT FAMILIES
-================================================================= */
-
-$sans: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-$serif: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-
-$font_headings: $sans;
-$font_body: $serif;
-
-/*  ================================================================
-    FONT SIZES
-================================================================= */
-$font_size_base: 16px;
-$font_size_base_min: 12px;
-
-$line_height_base: 1.4;
-
-$font_size_h1:      32px;
-$font_size_h1_min:  24px;
-
-$font_size_h2:      26px;
-$font_size_h2_min:  20px;
-
-$font_size_h3:      20px;
-$font_size_h3_min:  16px;
-
-$font_size_h4:      16px;
-$font_size_h4_min:  12px;
-
-$font_size_h5:      12px;
-$font_size_h5_min:  12px;
-
-$font_size_h6:      12px;
-$font_size_h6_min:  12px;
-
-
-
-
-
-
-/*  ================================================================
-    PSD FILE WIDTH
-    Used as context for calculating top/bottom margin percentages
-================================================================= */
-$psd_file_width: 1400px;
-$psd: $psd_file_width;
-
-
-/*  ================================================================
-    Color Scheme
-    Examples based on the official Sass styleguide.
-================================================================= */
-
-/* Selections */
-$color_selection: #b3d4fc;
-
-/* Messages */
-$color_message:   #f4ecbb;
-$color_success:   #2cde2c;
-$color_warning:   #cf8600;
-$color_important: #d00;
-$color_notice:    #66b;
-
-/* Borders */
-$color_border:  #eee;
-
-
-
-
-/*  ================================================================
-    Z-indexs
-================================================================= */
-$z_index_modal                       : 9000;
-$z_index_overlay                     : 8000;
-$z_index_dropdown                    : 7000;
-$z_index_header                      : 6000;
-$z_index_footer                      : 5000;
-
-
-
-
 /*============================================================================
   Table of Contents
 
@@ -104,19 +8,52 @@ $z_index_footer                      : 5000;
     5. Module & Component Specific
 
 ==============================================================================*/
-$debug_breakpoints: false;
 
+$debug_breakpoints: true;
 
 /*============================================================================
   1. Content Sizing
 ==============================================================================*/
 
-$site_max: 1400px; // width of design file canvas
+
+/**
+ *
+ * PSD/Design Canvas Width
+ * Used as context for calculating top/bottom margin percentages
+ *
+ */
+$design_canvas_width: 1400px;
+$design_width: $design_canvas_width;
+$site_max_width: $design_width; // width of design file canvas
+
+
+//--  Breakpoints
+
+$bp_desktop_xlarge: 1300px;
+$bp_desktop_large:  1050px;
+$bp_desktop_medium: 980px;
+$bp_desktop_small:  900px;
+$bp_desktop_xsmall: 800px;
+
+$bp_desktop:        769px;
+$bp_tablet:         768px;
+$bp_below_tablet:   $bp_tablet - 1px;
+
+$bp_mobile_xlarge:  650px;
+$bp_mobile_large:   600px; // Buttons go 100%;
+$bp_mobile_medium:  550px;
+$bp_mobile_small:   414px;// iPhone 6plus
+$bp_mobile_xsmall:  375px;// iPhone 6
+$bp_mobile_tiny:    320px;// iPhone 5
+
+
+//--  Gutters
+
 $gutter: 55px;
-$gutter_percent: percentage($gutter / $site_max);
+$gutter_percent: percentage($gutter / $site_max_width);
 
 $gutter_half: ($gutter / 2 );
-$gutter_split_percent: percentage($gutter_half / $site_max );
+$gutter_split_percent: percentage($gutter_half / $site_max_width );
 
 $gutter_tablet: $gutter / 2;
 $gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
@@ -128,26 +65,11 @@ $standard_block_bottom_spacing: 34px; // converted to ems in most cases
 
 $collection_grid_item_margin: 34px;
 // Outer padding needs to be split to account for split gutters on items
-$collection_grid_padding: 0 percentage(( $gutter - ( $collection_grid_gutter / 2 )) / $site_max );
-
-// 64.5781px
-// 35.2188px
-// 12.5px
+$collection_grid_padding: 0 percentage(( $gutter - ( $collection_grid_gutter / 2 )) / $site_max_width );
 
 
 $gridGutter: 0; // can be a %, but nested grids will have smaller margins because of it
 $radius: 0;
-// Logo max width
-$logoMaxWidth: 450px; //{{ settings.logo_max_width | default: '450' | remove: 'px' }}px;
-
-
-$design: 960px;
-
-// PSD FILE WIDTH
-// usedas as context for calculating top/bottom margin percentages
-$psd_file_width: 1400px;
-$psd: $psd_file_width;
-
 
 
 
@@ -210,7 +132,30 @@ $headline_font_weight: $fw_medium;
 
 
 
+//---- Font Sizes
 
+$font_size_base: 16px;
+$font_size_base_min: 12px;
+
+$line_height_base: 1.4;
+
+$font_size_h1:      32px;
+$font_size_h1_min:  24px;
+
+$font_size_h2:      26px;
+$font_size_h2_min:  20px;
+
+$font_size_h3:      20px;
+$font_size_h3_min:  16px;
+
+$font_size_h4:      16px;
+$font_size_h4_min:  12px;
+
+$font_size_h5:      12px;
+$font_size_h5_min:  12px;
+
+$font_size_h6:      12px;
+$font_size_h6_min:  12px;
 
 
 
@@ -234,7 +179,25 @@ $secondary_color: $grey;
 $darkest:         #2c2c35;
 $lightest:        #fff;
 
-$masthead_pre_bg_color: #f2f2f3;
+/*  ================================================================
+    Color Scheme
+    Examples based on the official Sass styleguide.
+================================================================= */
+
+/* Selections */
+$color_selection: #b3d4fc;
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
+
+/* Borders */
+$color_border:  #eee;
+
+
 
 $body_txt_color:  $black;
 $body_bg_color_init: $white;
@@ -249,10 +212,13 @@ $border_color:  $grey;
 
 $selection_color:             $red;
 $selection_background_color:  $lightest_grey;
-// $footer_height: 225px;
-// $footer_wrapper:
-// $footer_container_selector
-// $footer_selector
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
 
 
 

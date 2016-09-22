@@ -6,15 +6,15 @@
   padding: 4%;
  }
 
-@import "media-queries";
 @import "variables";
+@import "media-queries";
+
 
 
 /*============================================================================
   VARIABLES
 ==============================================================================*/
 
-@import "variables";
 @if $debug_breakpoints == true {
   @include breakpoint_debugger();
 }
