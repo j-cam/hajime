@@ -1,4 +1,4 @@
-# hajime
+# hajime [![Build Status](https://travis-ci.org/j-cam/hajime-boilerplate.svg?branch=master)](https://travis-ci.org/j-cam/hajime-boilerplate)
 
 A boilerplate/toolkit that makes use of Gulp, PostCSS, and Nunjucks to help get new front-end projects up and running quickly. 
 
