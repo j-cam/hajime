@@ -11,7 +11,7 @@ var postcss = require('gulp-postcss');
 var cssnano = require('gulp-cssnano');
 var autoprefixer = require('autoprefixer');
 var mqpacker = require('css-mqpacker');
-var reporter = require('postcss-reporter');
+
 var rename = require('gulp-rename');
 
 var gulpif = require('gulp-if');
