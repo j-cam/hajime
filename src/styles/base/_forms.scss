@@ -1,0 +1,164 @@
+//input[type=submit] {}
+//input[type=submit]:hover {}
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+    font-family: inherit;
+    // color: inherit;
+    border: 1px solid inherit;
+    &:focus {
+        // color: inherit;
+    }
+}
+
+input:-webkit-autofill {
+    background-color: inherit !important;
+    color: $red !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+    text-transform: lowercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="password"] {
+    &::placeholder {
+        text-transform: lowercase;
+    }
+}
+
+// textarea {}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    width: auto;
+    padding: $button_padding;
+    font: normal none $button_font_weight #{$button_font_size}/#{$button_line_height} $button_font_family;
+    background-color: $button_background_color;
+    color: $button_color;
+}
+
+// Timber @ line: 1369
+
+/*================ Prevent zoom on touch devices in active inputs ================*/
+
+@include at-query($max, $bp_tablet) {
+    input,
+    textarea {
+        font-size: em(16px);
+    }
+}
+
+input,
+textarea,
+button,
+select {
+    padding: 0;
+    margin: 0;
+    user-select: text;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    width: auto;
+    padding: $button_padding;
+    font: normal none $button_font_weight #{$button_font_size}/#{$button_line_height} $button_font_family;
+    background-color: $button_background_color;
+    color: $button_color;
+}
+
+button,
+input,
+textarea {
+    appearance: none;
+}
+
+input[type="image"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+fieldset {
+    border: 1px solid $border_color;
+    padding: $gutter / 2;
+    ul {
+        list-style: none;
+    }
+}
+
+legend {
+    border: 0;
+    padding: 0;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+input,
+textarea,
+select {
+    border: 1px solid $border_color;
+    max-width: 100%;
+    padding: 8px 10px;
+    border-radius: $radius;
+    &:focus {
+        border: 1px solid darken($border_color, 10%);
+    }
+    &[disabled],
+    &.disabled {
+        cursor: default;
+        background-color: $disabled_grey;
+        border-color: $disabled_border;
+        color: darken($disabled_grey, 30%);
+    }
+    &.input-full {
+        width: 100%;
+        margin-bottom: em(10px);
+    }
+}
+
+textarea {
+    min-height: 100px;
+}
+
+
+/*================ Input element overrides ================*/
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+    margin: 0 8px 0 0;
+    padding: 0;
+    width: auto;
+}
+
+input[type="checkbox"] {
+    appearance: checkbox;
+}
+
+input[type="radio"] {
+    appearance: radio;
+}
+
+input[type="image"] {
+    padding-left: 0;
+    padding-right: 0;
+}

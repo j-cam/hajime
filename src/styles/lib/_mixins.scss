@@ -1,0 +1,463 @@
+// ==========================================================================
+// Mixins
+// Thanks to @sutterlity
+// https://github.com/sutter/POPY-Starter-integration-web/blob/master/scss/tools/_mixins.scss
+// ==========================================================================
+
+/**
+ * SMACSS Theming
+ * @example scss
+ * .foobar {
+ *   background: #ff3377;
+ *   @include theme(beccapurple){
+ *     background: #663399;
+ *   }
+ * }
+ * @param {String} $name - theme name
+ */
+
+@mixin theme($name) {
+    @if $theme==$name {
+        @content;
+    }
+}
+
+
+/**
+ * Media Queries
+ * Allows you to use inline media queries.
+ * @link http://jakearchibald.github.com/sass-ie/
+ * @param {String} $breakpoint - breakpoint
+ * @param {String} $query (min-width) - query type
+ * @param {String} $type (screen) - media type
+ * @example scss
+ * .foobar { @include mq(20em) { ... } }
+ */
+
+@mixin mq($breakpoint, $query: 'min-width', $type: 'screen') {
+    // breakpoint can be a variable
+    // if media queries are not supported
+    @if $fix-mqs {
+        @if $fix-mqs >=$breakpoint {
+            // ...and if the fixed breakpoint is greater than query...
+            @content; // ...output the content the user gave us.
+        }
+    }
+    // Otherwise, output it using a regular media query
+    @else {
+        @media #{$type} and (#{$query}: #{$breakpoint}) {
+            @content;
+        }
+    }
+}
+
+
+/**
+ * IE Specific Styles
+ * @example scss
+ * .foobar {
+ *   .lt-ie8 & { @include old-ie { ... } }
+ *   .lt-ie9 & { @include old-ie { ... } }
+ * }
+ */
+
+@mixin old-ie {
+    @if $old-ie {
+        @content;
+    }
+}
+
+
+/**
+ * Sass version of Sticky Footer by Ryan Fait
+ * @link http://ryanfait.com/sticky-footer/
+ * @param {String} $footer_height - height of footer including padding or borders
+ * @param {String} $root_selector (.site) - main wrapper element
+ * @param {String} $root_footer_selector (.push) - hidden element that "pushes" down the footer
+ * @param {String} $footer_selector (footer) - footer element
+ * @example scss
+ * .foobar { @include sticky-footer(4em) { ... } }
+ */
+
+/**
+ * the sticky footer mixin
+ **/
+@mixin sticky-footer($footer-height: 224px, $wrapper-selector: unquote("#wrapper"), $container-selector: unquote("#container"), $footer-selector: unquote(".site-footer")) {
+  html, body {
+    height: 100%;
+  }
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  #{$wrapper-selector} {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$container-selector} {
+      padding: 0 0 $footer-height 0;
+    }
+  }
+  #{$footer-selector} {
+    height: $footer-height;
+  }
+}
+
+
+/**
+ * Fullscreen Background for < IE8
+ * @link http://css-tricks.com/perfect-full-page-background-image/
+ * @example scss
+ * .foobar { @include fullscreen-bg() { ... } }
+ */
+
+@mixin fullscreen-bg() {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        min-width: 50%;
+        min-height: 50%;
+    }
+}
+
+
+/**
+ * @param {number} $opacity
+ * @example scss
+ * .foobar { @include opacity(4) { ... } }
+ */
+
+@mixin opacity($opacity) {
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+    opacity: $opacity;
+    /* Hack IE6 */
+    .lt-ie7 & {
+        filter: alpha(opacity=#{round($opacity * 100)});
+        zoom: 1;
+    }
+}
+
+
+/**
+ * @link http://bit.ly/thoughtbot-bourbon-inline-block
+ * @require {mixin} old-ie
+ * @param {String} $alignment (baseline)
+ * @example scss
+ * .foobar { @include inline-block() { ... } }
+ */
+
+@mixin inline-block($alignment: baseline) {
+    display: inline-block;
+    @if $alignment and $alignment !=none {
+        vertical-align: $alignment;
+    }
+    @include old-ie {
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+    }
+}
+
+
+/**
+ * Retina Displays
+ * @param {String} $image - image url
+ * @param {String} $width - image width
+ * @param {String} $height - image height
+ * @example scss
+ * .foobar { @include image-2x('img/logo.png', 200px, 300px) { ... } }
+ */
+
+@mixin image-2x($image, $width, $height) {
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+        // on retina, use an image that's scaled by 2
+        background-image: url($image);
+        background-size: $width $height;
+    }
+}
+
+
+/**
+ * RGBA Fallback
+ * @param {String} $color
+ * @param {String} $percent
+ * @example scss
+ * .foobar { @include rgba-bg(#f37,.9) { ... } }
+ */
+
+@mixin rgba-bg($color, $opacity) {
+    background: $color;
+    background: rgba($color, $opacity);
+}
+
+@mixin rgbaProperty($property, $color, $opacity) {
+    #{$property}: $color;
+    #{$property}: rgba($color, $opacity);
+}
+
+
+/*============================================================================
+  #Sass Mixins
+==============================================================================*/
+
+@mixin clearfix() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    *zoom: 1;
+}
+
+
+/*============================================================================
+  Layer promotion mixin for creating smoother animations with higher FPS.
+==============================================================================*/
+
+@mixin promote-layer($properties: transform) {
+    -webkit-transform: translateZ(0); // translateZ hack
+    will-change: $properties; // spec
+}
+
+// image replacement
+@mixin image-replace {
+    // text-indent: -999px;
+    // white-space: nowrap;
+    // overflow: hidden;
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}
+
+@mixin font-reset {
+    font: 0/0 a;
+}
+
+@mixin rems( $property, $px_value) {
+    $value: strip-unit( $px_value);
+    #{$property}: ( $value * 1) + px;
+    #{$property}: ( $value / 10) + rem;
+}
+
+
+
+// box-shadow: offset-x offset-y blur-radius spread-radius rgba(0, 0, 0, opacity) inset;
+@mixin psd_drop_shadow( $distance: 0px, $spread: 0px, $size: 5px, $r: 0, $g: 0, $b: 0, $opacity: 0.15) {
+    box-shadow: $distance $spread $size $spread rgba( $r, $g, $b, $opacity);
+    // box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+    &:-moz-placeholder {
+        @content
+    }
+    &::-moz-placeholder {
+        @content
+    }
+    &:-ms-input-placeholder {
+        @content
+    }
+}
+
+@mixin font-size($px_value: $base_font_size) {
+    @include rems( font-size, $px_value);
+}
+
+// $photoshop-global-light: 120deg !default;
+// //--------------------------------
+// // Photoshop Shadow Function
+// //--------------------------------
+// @function photoshop-shadow( $angle: $photoshop-global-light, $distance: 0, $spread: 0, $size: 0, $color: $black, $inner: false ) {
+//   // default to degrees, same as photoshop
+//   @if unitless($angle) {
+//     $angle: $angle * 1deg;
+//   }
+@mixin transition($transition-time:0.5s, $method:'ease-in-out') {
+    transition: $transition-time $method;
+}
+
+
+/**
+ * Buttons
+ * This customises your buttons with a different background color and text color.
+ * If no text color is specified it will default to white.
+ * @param {String} $color-background - background color
+ * @param {String} $color-text (#fff) - text color
+ * @example scss
+ * .foobar { @include btn(#f37) { ... } }
+ */
+
+@mixin button( $background_color: $button_background_color, $color: $button_color, $font-size: $button_font_size ) {
+
+    width: auto;
+    padding: $button_padding;
+    // font: font-style font-variant font-weight font-size/line-height font-family;
+    $font_size: em($font_size);
+    font: normal normal $button_font_weight #{$font_size}/#{$button_line_height} $button_font_family;
+    text-decoration: none;
+    text-transform: lowercase;
+    background-color: $background_color;
+    border: 0;
+    color: $color;
+    //transition: all .4s ease-in-out;
+    &:hover {
+        cursor: pointer
+    }
+    &:focus {
+        outline: none
+    }
+
+    @media ( $mobile_large ) {
+      width: 100%;
+    }
+}
+
+// Tooltip
+@mixin tooltip($size: 5px, $dir: left, $bgcolor: $black) {
+    background: $bgcolor;
+    position: relative;
+    &:before {
+        border-style: solid;
+        content: "";
+        display: block;
+        position: absolute;
+        @if (($dir==top) or ($dir==bottom)) {
+            border-color: $bgcolor transparent;
+            left: 50%;
+            margin-left: -$size;
+        }
+        @else {
+            border-color: transparent $bgcolor;
+            margin-top: -$size;
+            top: 50%;
+        }
+        @if ($dir==top) {
+            border-width: 0 $size $size $size;
+            top: -$size;
+        }
+        @if ($dir==right) {
+            border-width: $size 0 $size $size;
+            right: -$size;
+        }
+        @if ($dir==bottom) {
+            border-width: $size $size 0 $size;
+            bottom: -$size;
+        }
+        @if ($dir==left) {
+            border-width: $size $size $size 0;
+            left: -$size;
+        }
+    }
+}
+
+@mixin background-size($size-1: $default-background-size, $size-2: false, $size-3: false, $size-4: false, $size-5: false, $size-6: false, $size-7: false, $size-8: false, $size-9: false, $size-10: false) {
+    $size-1: if(type-of($size-1)==string, unquote($size-1), $size-1);
+    $sizes: compact($size-1, $size-2, $size-3, $size-4, $size-5, $size-6, $size-7, $size-8, $size-9, $size-10);
+    @include experimental(background-size, $sizes, -moz, -webkit, -o, not -ms, not -khtml);
+}
+
+// Sass mixins
+@mixin iconbefore($glyph: "\f179") {
+    @extend .fa;
+    @extend .fa-fw;
+    content: $glyph;
+}
+
+@mixin iconafter($glyph: "\f179") {
+    @extend .fa;
+    @extend .fa-fw;
+    content: $glyph;
+}
+
+@mixin ir() {
+    display: block;
+    text-indent: -999px;
+    position: relative;
+    height: 1em;
+    width: 1em;
+}
+
+@mixin icon($glyph: "\f179") {
+    @extend .fa;
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    content: $glyph;
+}
+
+@mixin message($glyph: "\f00d", $color: $info) {
+    padding: 1em 1.618em 1em 5em;
+    border-top: .202em solid $color;
+    background: $bg_light;
+    margin-bottom: 2.618em;
+    font-weight: normal;
+    position: relative;
+    color: #666;
+    &:before {
+        font-family: 'FontAwesome';
+        content: $glyph;
+        color: $color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 2.618em;
+        background: darken( $bg_light, 2%);
+        text-align: center;
+        padding: 1em .618em;
+        font-weight: normal !important;
+    }
+}
+
+@mixin border_radius_reset() {
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    border-radius: none;
+}
+
+@mixin opacity($opacity:0.75) {
+    opacity: $opacity;
+    //filter: alpha(opacity=$opacity * 100);
+}
+
+@mixin box_shadow( $shadow_x: 3px, $shadow_y: 3px, $shadow_rad: 3px, $shadow_in: 3px, $shadow_color: #888) {
+    box-shadow: $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+    -webkit-box-shadow: $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+}
+
+@mixin inset_box_shadow( $shadow_x: 3px, $shadow_y: 3px, $shadow_rad: 3px, $shadow_in: 3px, $shadow_color: #888) {
+    box-shadow: inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+    -webkit-box-shadow: inset $shadow_x $shadow_y $shadow_rad $shadow_in $shadow_color;
+}
+
+@mixin box_shadow_reset() {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

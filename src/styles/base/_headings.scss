@@ -1,0 +1,35 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $headline_font_family;
+    font-style: normal;
+    font-weight: $headline_font_weight;
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+h1 {
+    font-size: em(24px);
+    line-height: line-height(24px, 30px);
+    margin-top: 0;
+}
+
+h2 {
+    font-size: em(18px);
+    line-height: line-height( 18px, 30px);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-size: em(16px);
+    line-height: line-height( 14px, 17px);
+}
