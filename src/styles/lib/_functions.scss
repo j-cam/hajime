@@ -121,3 +121,28 @@
 @function ls($psd_letter_spacing_px){
   @return $psd_letter_spacing_px / 1000;
 }
+
+// // Need to move
+// @mixin line-height( $px_value: $rem_base ) {
+//   @include rems( line-height, $px_value );
+// }
+// Converts the PSD font and Height to a unitless CSS line-height number
+@function line-height( $font_px_val, $psd_lh_px_val: "") {
+    @if $psd_lh_px_val=="" {
+        @warn "No line height provided assuming auto line height";
+        $font_px: strip-unit($font_px_val);
+        $lh_px: $font_px * 1.2;
+        // line-height/font-size
+        @return $lh_px / $font_px;
+    }
+    @else {
+        $font_px: strip-unit( $font_px_val);
+        $lh_px: strip-unit( $psd_lh_px_val);
+        // line-height/font-size
+        @return $lh_px / $font_px;
+    }
+}
+
+@function lh($font_px_val, $psd_lh_px_val: "") {
+    @return line-height($font_px_val, $psd_lh_px_val: "");
+}

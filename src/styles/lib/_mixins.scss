@@ -219,10 +219,6 @@
     *zoom: 1;
 }
 
-@function strip-unit($num) {
-    @return $num / ($num * 0 + 1);
-}
-
 
 /*============================================================================
   Layer promotion mixin for creating smoother animations with higher FPS.
@@ -261,30 +257,7 @@
     #{$property}: ( $value / 10) + rem;
 }
 
-// // Need to move
-// @mixin line-height( $px_value: $rem_base ) {
-//   @include rems( line-height, $px_value );
-// }
-// Converts the PSD font and Height to a unitless CSS line-height number
-@function line-height( $font_px_val, $psd_lh_px_val: "") {
-    @if $psd_lh_px_val=="" {
-        @warn "No line height provided assuming auto line height";
-        $font_px: strip-unit($font_px_val);
-        $lh_px: $font_px * 1.2;
-        // line-height/font-size
-        @return $lh_px / $font_px;
-    }
-    @else {
-        $font_px: strip-unit( $font_px_val);
-        $lh_px: strip-unit( $psd_lh_px_val);
-        // line-height/font-size
-        @return $lh_px / $font_px;
-    }
-}
 
-@function lh($font_px_val, $psd_lh_px_val: "") {
-    @return line-height($font_px_val, $psd_lh_px_val: "");
-}
 
 // box-shadow: offset-x offset-y blur-radius spread-radius rgba(0, 0, 0, opacity) inset;
 @mixin psd_drop_shadow( $distance: 0px, $spread: 0px, $size: 5px, $r: 0, $g: 0, $b: 0, $opacity: 0.15) {
