@@ -1,11 +1,3 @@
-/*============================================================================
-  #Normalize
-==============================================================================*/
-
-
-
-/* ==============================================================================*/
-
 html, body {
   width: 100%;
   padding: 0;
@@ -17,7 +9,6 @@ html {
 	font-size: 100%;
 	background-color: #fff;
 	height: 100%;
-	// overflow-y: auto; // breaks scrollTop
 }
 
 body  {
@@ -40,15 +31,12 @@ select {
   font-style: normal;
   color: $body_txt_color;
   font-weight: $fw_regular;
-  // typekit rendering fixes for osx
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale; /* Firefox 25+ */
 }
 
 [tabindex='-1']:focus {
   outline: none;
 }
+
 *,
 input,
 :before,
@@ -95,6 +83,14 @@ hr {
 sup {
 	top:0;
 }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: $monospace;
+}
+
 
 embed,
 iframe,

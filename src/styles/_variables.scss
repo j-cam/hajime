@@ -190,20 +190,27 @@ $z_indexes: (
 $base_font_size:          16px; // Always 16px
 $base_line_height:        1.6;
 
-//---- Font Families
-
-$sans:              'sofia-pro', 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic,'Helvetica Neue', Helvetica;
-$serif:             'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-$body_font_family:  $sans;
-
-
-
 //---- Font Weights
 
 $fw_regular:  400;
 $fw_medium:   500;
 $fw_bold:     700;
 $fw_black:    900;
+
+//---- Font Families
+
+$sans:              'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, 'Helvetica Neue', Helvetica, sans-serif;
+$serif:             Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+$monospace:         'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+
+$body_font_family:  $sans;
+
+$headline_font_family: $sans;
+$headline_font_weight: $fw_medium;
+
+
+
+
 
 
 

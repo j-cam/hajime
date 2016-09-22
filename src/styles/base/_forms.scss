@@ -95,6 +95,11 @@ input[type="image"] {
 fieldset {
   border: 1px solid $border_color;
   padding: $gutter / 2;
+
+  ul {
+    list-style: none;
+  }
+
 }
 
 legend {

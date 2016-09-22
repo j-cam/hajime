@@ -4,9 +4,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $sans;
+    font-family: $headline_font_family;
     font-style: normal;
-    font-weight: $fw_bold;
+    font-weight: $headline_font_weight;
     a {
         text-decoration: none;
         &:hover {

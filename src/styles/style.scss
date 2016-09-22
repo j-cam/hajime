@@ -1,43 +1,46 @@
-/*============================================================================
-  RESET
-==============================================================================*/
+/*!
+  ============= RESET ===============
+*/
 @import "vendor/normalize";
  .html5-tags {
   padding: 4%;
  }
 
-
+@import "media-queries";
 @import "variables";
 
 
 /*============================================================================
   VARIABLES
 ==============================================================================*/
-@import "media-queries";
+
 @import "variables";
 @if $debug_breakpoints == true {
   @include breakpoint_debugger();
 }
 
 
-
-/* @import 'vendor/animate-scss/animate'; */
-
-/*! ------------------------------------------
- LIB
-
- Utilities & Tools for generating output
---------------------------------------------- */
-@import "lib/fonts";
+/*============================================================================
+  LIB
+  Utilities & Tools for generating output
+==============================================================================*/
+@import "lib/typekit"; // wait for typekit fonts to load
+@import "lib/shopify-helpers";
+@import "lib/data-uri";
+@import "lib/functions";
 @import "lib/mixins";
-/*@import "lib/placeholders";*/
+@import "lib/vendor";
+@import "lib/placeholders";
 @import "lib/utils";
-@import "lib/debug";
+@import "lib/helpers";
 
 
-/*! ---------------------------------
 
-  BASE
+
+/*!
+  ============= BASE ===============
+*/
+/* ---------------------------------
 
   A Base rule is applied to an element using an element selector, a
   descendent selector, or a child selector, along with any pseudo-classes.
@@ -53,9 +56,10 @@
 @import "base/tables";
 
 
-/*! ------------------------------------------
-
-  LAYOUT
+/*!
+  ============= LAYOUT ===============
+*/
+/* ---------------------------------
 
   Layout styles can also be divided into major and minor styles based on
   reuse. Major layout styles such as header and footer are traditionally
@@ -69,8 +73,10 @@
 
 
 
-/*! ----------------------------------------
-  MODULES
+/*!
+  ============= MODULES ===============
+*/
+/* ---------------------------------
 
   A Module is a more discrete component of the page. It is your
   navigation bars and your carousels and your dialogs and your widgets
@@ -88,13 +94,16 @@
   selectors, sticking only to class names. A module will likely contain a
   number of elements and there is likely to be a desire to use descendent
   or child selectors to target those elements.
+
 ------------------------------------------- */
 @import "modules/nav";
 
 
 
-/* ----------------------------------------
-  SHAME
+/*!
+  ============= SHAME ===============
+*/
+/* ---------------------------------
 
   because hacks happen.
 
@@ -103,3 +112,4 @@
 
 ----------------------------------------- */
 @import "shame";
+
