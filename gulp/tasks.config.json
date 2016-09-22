@@ -10,7 +10,7 @@
     "proxy": null,
     "root": "dist",
     "files": ["dist/**/*.css", "dist/**/*.js", "dist/**/*.html"],
-    "open": false
+    "open": true
   },
 
   "deployment": {
