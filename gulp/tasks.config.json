@@ -22,6 +22,9 @@
     },
     "rsync": {
       "options": "-avzh --delete -e ssh"
+    },
+    "ghPages": {
+      "src": "dist/**/*"
     }
   },
 
