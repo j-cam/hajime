@@ -1,7 +1,7 @@
 {
   "environment": {
-      "production": true,
-      "development": false
+      "production": false,
+      "development": true
   },
 
   "server": {
@@ -50,7 +50,7 @@
     "base" : "src/styles/",
     "main" : "src/styles/style.css",
     "files": [
-      "src/styles/**/*.css"
+      "src/styles/**/*.scss"
     ],
     "dest" : "dist/assets/styles/"
   },
