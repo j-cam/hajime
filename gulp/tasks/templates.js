@@ -20,6 +20,6 @@ gulp.task('templates', function () {
     .pipe(plumber())
     .pipe(nunjucksRender().on('error', gutil.log))
     .pipe(plumber.stop())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(config.templates.dest))
 
 });

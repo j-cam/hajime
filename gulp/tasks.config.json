@@ -8,14 +8,14 @@
     "host": "localhost",
     "port": 3000,
     "proxy": null,
-    "root": "dist",
-    "files": ["dist/**/*.css", "dist/**/*.js", "dist/**/*.html"],
+    "root": "docs",
+    "files": ["docs/**/*.css", "docs/**/*.js", "docs/**/*.html"],
     "open": true
   },
 
   "deployment": {
     "local": {
-      "path": "dist"
+      "path": "docs"
     },
     "remote": {
       "host": "YOUR HOST"
@@ -24,13 +24,13 @@
       "options": "-avzh --delete -e ssh"
     },
     "ghPages": {
-      "src": "dist/**/*"
+      "src": "docs/**/*"
     }
   },
 
   "assets": {
     "base": "src/",
-    "dest": "dist/assets/"
+    "dest": "docs/assets/"
   },
   "versioning": {
     "files": [
@@ -46,7 +46,7 @@
     "copy" : [
       "src/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"
     ],
-    "dest"  : "dist/assets/scripts/"
+    "dest"  : "docs/assets/scripts/"
   },
 
   "styles": {
@@ -55,7 +55,7 @@
     "files": [
       "src/styles/**/*.scss"
     ],
-    "dest" : "dist/assets/styles/"
+    "dest" : "docs/assets/styles/"
   },
 
   "fonts": {
@@ -63,7 +63,7 @@
     "files": [
       "src/fonts/**/*"
     ],
-    "dest" : "dist/assets/fonts/"
+    "dest" : "docs/assets/fonts/"
   },
   "sprites": {
     "base": "src/images/sprites/",
@@ -77,7 +77,7 @@
     "files": [
       "src/images/*"
     ],
-    "dest" : "dist/assets/images/"
+    "dest" : "docs/assets/images/"
   },
 
   "templates": {
@@ -87,6 +87,6 @@
     "pages": [
       "src/templates/pages/**/*.+(html|njk)"
     ],
-    "dest" : "dist"
+    "dest" : "docs"
   }
 }
