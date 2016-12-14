@@ -1,9 +1,0 @@
-<!-- index.nunjucks -->
-{% extends "layout.nunjucks" %}
-
-
-{% block content %}
-  {% include "_partials/navigation.nunjucks" %}
-  {% include "_partials/html5-tags.nunjucks" %}
-  {% include "_partials/footer.nunjucks" %}
-{% endblock %}

@@ -82,10 +82,10 @@
 
   "templates": {
     "base" : "src/templates/",
-    "files" : "src/templates/**/*/*.+(html|nunjucks)",
+    "files" : "src/templates/**/*/*.+(html|njk)",
     "src" : "src/templates/nunjucks/",
     "pages": [
-      "src/templates/pages/**/*.+(html|nunjucks)"
+      "src/templates/pages/**/*.+(html|njk)"
     ],
     "dest" : "dist"
   }
