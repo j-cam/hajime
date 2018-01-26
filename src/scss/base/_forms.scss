@@ -7,10 +7,13 @@ input[type="password"],
 input[type="search"],
 textarea {
     font-family: inherit;
+
     // color: inherit;
     border: 1px solid inherit;
+
     &:focus {
         // color: inherit;
+   
     }
 }
 
@@ -62,6 +65,7 @@ input[type="submit"] {
     }
 }
 
+
 input,
 textarea,
 button,
@@ -97,6 +101,7 @@ input[type="image"] {
 fieldset {
     border: 1px solid $border_color;
     padding: $gutter / 2;
+
     ul {
         list-style: none;
     }
@@ -119,9 +124,11 @@ select {
     max-width: 100%;
     padding: 8px 10px;
     border-radius: $radius;
+
     &:focus {
         border: 1px solid darken($border_color, 10%);
     }
+
     &[disabled],
     &.disabled {
         cursor: default;
@@ -129,6 +136,7 @@ select {
         border-color: $disabled_border;
         color: darken($disabled_grey, 30%);
     }
+
     &.input-full {
         width: 100%;
         margin-bottom: em(10px);
@@ -138,7 +146,6 @@ select {
 textarea {
     min-height: 100px;
 }
-
 
 /*================ Input element overrides ================*/
 

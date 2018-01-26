@@ -60,8 +60,8 @@ $gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
 
 $collection_grid_gutter: 24px;
 
-$standard_block_side_spacing: 24px; // converted to ems in most cases
-$standard_block_bottom_spacing: 34px; // converted to ems in most cases
+$standard_block_side_spacing: 24px;
+$standard_block_bottom_spacing: 34px;
 
 $collection_grid_item_margin: 34px;
 // Outer padding needs to be split to account for split gutters on items
@@ -187,15 +187,7 @@ $lightest:        #fff;
 /* Selections */
 $color_selection: #b3d4fc;
 
-/* Messages */
-$color_message:   #f4ecbb;
-$color_success:   #2cde2c;
-$color_warning:   #cf8600;
-$color_important: #d00;
-$color_notice:    #66b;
 
-/* Borders */
-$color_border:  #eee;
 
 
 
@@ -213,20 +205,6 @@ $border_color:  $grey;
 $selection_color:             $red;
 $selection_background_color:  $lightest_grey;
 
-/* Messages */
-$color_message:   #f4ecbb;
-$color_success:   #2cde2c;
-$color_warning:   #cf8600;
-$color_important: #d00;
-$color_notice:    #66b;
-
-
-
-// Nav and dropdown link background
-$navbar_bg_color: $lightest;
-$navbar_txt_color: $darkest;
-$navbar_link_active: $red;
-$subnav_highlight_color: $red;
 
 //---- Helper colors
 
@@ -237,21 +215,6 @@ $error_red_bg: #fff6f6;
 $success_green: #56ad6a;
 $success_green_bg: #ecfef0;
 
-
-
-
-
-/*============================================================================
-  5. Module & Component Specific
-==============================================================================*/
-
-//---- Drawers
-$drawer_nav_width: 100%;
-$drawer_cart_width: 100%;
-$drawer_bg_color: $lightest;
-$drawer_border_color: darken($drawer_bg_color, 5%);
-$drawer_text_color: $darkest;
-$drawer_transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
 
 //---- Button Defaults
 
@@ -273,55 +236,6 @@ $button_background_color_secondary_hover: #949497;
 
 $button_background_color_alt: $black;
 $button_background_color_alt_hover: $black;
-//---- Hero
-
-$hero_headline_color: #fff;
-
-
-
-
-
-//---- Product Slider
-
-/*
- *  From OwlCarousel2 owl.theme.default.scss
- */
-
-$prod_slider_color_base:             $red;
-$prod_slider_color_white:            $white;
-$prod_slider_color_gray:             $grey;
-//nav
-$prod_slider_nav_color:              $prod_slider_color_white;
-$prod_slider_nav_color_hover:        $prod_slider_color_white;
-$prod_slider_nav_font_size:          14px;
-$prod_slider_nav_rounded:            3px;
-$prod_slider_nav_margin:             5px;
-$prod_slider_nav_padding:            4px 7px;
-$prod_slider_nav_background:         $prod_slider_color_gray;
-$prod_slider_nav_background_hover:   $prod_slider_color_base;
-$prod_slider_nav_disabled_opacity:   0.5;
-//dots
-$prod_slider_dot_width:              10px;
-$prod_slider_dot_height:             10px;
-$prod_slider_dot_rounded:            30px;
-$prod_slider_dot_margin:             5px 7px;
-$prod_slider_dot_background:         $lightest_grey;
-$prod_slider_dot_background-active:  $grey;
-
-
-
-
-
-/*==================================
-=            Collection            =
-==================================*/
-
-$transition_product_images: 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
-
-
-/*=====  End of Collection  ======*/
-
-
 
 
 
