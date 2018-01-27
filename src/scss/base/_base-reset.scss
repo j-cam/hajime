@@ -298,7 +298,7 @@ table {
 
 caption {
   text-align: left;
-  caption-side: bottom;
+  caption-side: $table-caption-side;
 }
 
 th {
