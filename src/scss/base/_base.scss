@@ -1,5 +1,6 @@
-// stylelint-disable at-rule-no-vendor-prefix, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
+// Customized version of TWBS 4's Reboot
+//
 // Reboot
 //
 // Normalization of HTML elements, manually forked from Normalize.css to remove
@@ -40,12 +41,10 @@ html {
   }
 }
 
-// stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
-// stylelint-enable selector-list-comma-newline-after
 
 // Body
 //
@@ -84,6 +83,7 @@ hr {
   box-sizing: content-box; // 1
   height: 0; // 1
   overflow: visible; // 2
+  border-top: 1px solid rgba($border-color, 0.75);
 }
 
 
@@ -278,6 +278,15 @@ svg:not(:root) {
   overflow: hidden; // Hide the overflow in IE
 }
 
+embed,
+iframe,
+video {
+    max-width: 100%;
+}
+
+video {
+    height: auto;
+}
 
 //
 // Tables
@@ -288,9 +297,6 @@ table {
 }
 
 caption {
-  padding-top: $table-cell-padding;
-  padding-bottom: $table-cell-padding;
-  color: $text-muted;
   text-align: left;
   caption-side: bottom;
 }
@@ -306,11 +312,11 @@ th {
 // Forms
 //
 
-label {
-  // Allow labels to use `margin` for spacing.
-  display: inline-block;
-  margin-bottom: .5rem;
-}
+// label {
+//   // Allow labels to use `margin` for spacing.
+//   display: inline-block;
+//   margin-bottom: .5rem;
+// }
 
 // Remove the default `border-radius` that macOS Chrome adds.
 //
@@ -336,7 +342,9 @@ textarea {
   margin: 0; // Remove the margin in Firefox and Safari
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
   line-height: inherit;
+  font-style: normal;
 }
 
 button,
@@ -391,6 +399,11 @@ textarea {
   overflow: auto; // Remove the default vertical scrollbar in IE.
   // Textareas should really only resize vertically so they don't break their (horizontal) containers.
   resize: vertical;
+}
+
+::selection {
+  color: $color-selection;
+  background: $background-color-selection;
 }
 
 fieldset {
