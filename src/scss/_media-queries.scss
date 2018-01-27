@@ -151,7 +151,7 @@ $max: max-width;
     padding: 0 4px;
     right: 0;
     background-color: rgba(#fff,0.6);
-    color: $black;
+    color: #000;
     content: attr(data-before);
   }
 
@@ -160,7 +160,7 @@ $max: max-width;
       width: 100%;
       left: 0;
       right: 0;
-      background-color: rgba($black,0.7);
+      background-color: rgba(#000,0.7);
       color: #fff;
 
       content: "greater than #{$bp_desktop_xlarge} ";
