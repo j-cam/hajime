@@ -1,16 +1,11 @@
+caption {
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+}
 table {
     border-spacing: 0;
-    border:1px solid $lightest_grey;
-    background: #fff;
-    border-collapse: collapse;
-    margin-bottom:1.5em;
     td,th {
       border-collapse: collapse;
-      padding: em(22px);//1.387em
-      vertical-align: middle;
-      p:last-child {
-      	margin-bottom:0;
-      }
     }
     thead {
       th {
@@ -27,10 +22,10 @@ table {
     }
     tbody {
       th {
-      	background: $white;
+
       }
       td {
-        border-bottom: 1px solid $lightest_grey;
+        border-bottom: 1px solid $table-border-color;
       }
 
       tr:last-child {

@@ -4,22 +4,16 @@ input[type="text"],
 input[type="email"],
 input[type="url"],
 input[type="password"],
-input[type="search"],
-textarea {
+input[type="search"] {
     font-family: inherit;
-
-    // color: inherit;
-    border: 1px solid inherit;
-
     &:focus {
-        // color: inherit;
-   
+        outline: 1px dotted;
     }
 }
 
 input:-webkit-autofill {
     background-color: inherit !important;
-    color: $red !important;
+    color: inherit !important;
 }
 
 input[type="text"],
@@ -117,35 +111,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input,
-textarea,
-select {
-    border: 1px solid $border_color;
-    max-width: 100%;
-    padding: 8px 10px;
-    border-radius: $radius;
 
-    &:focus {
-        border: 1px solid darken($border_color, 10%);
-    }
-
-    &[disabled],
-    &.disabled {
-        cursor: default;
-        background-color: $disabled_grey;
-        border-color: $disabled_border;
-        color: darken($disabled_grey, 30%);
-    }
-
-    &.input-full {
-        width: 100%;
-        margin-bottom: em(10px);
-    }
-}
-
-textarea {
-    min-height: 100px;
-}
 
 /*================ Input element overrides ================*/
 
