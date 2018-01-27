@@ -1,11 +1,6 @@
 /*!
   ============= RESET ===============
 */
-@import "vendor/normalize";
- .html5-tags {
-  padding: 4%;
- }
-
 @import "variables";
 @import "media-queries";
 
@@ -24,10 +19,12 @@
   LIB
   Utilities & Tools for generating output
 ==============================================================================*/
+
 @import "lib/typekit"; // wait for typekit fonts to load
 @import "lib/shopify-helpers";
 @import "lib/data-uri";
 @import "lib/functions";
+@import "lib/mixins/import"; // wait for typekit fonts to load
 @import "lib/mixins";
 @import "lib/placeholders";
 @import "lib/utils";
@@ -47,11 +44,7 @@
   styling for how that element should look in all occurrences on the page.
 
 ------------------------------------ */
-@import "base/base";
-@import "base/headings";
-@import "base/lists";
-@import "base/forms";
-@import "base/tables";
+@import "base/import";
 
 
 /*!
@@ -66,8 +59,6 @@
   where appropriate.
 
 --------------------------------------------- */
-@import "layout/grid";
-@import "layout/structure";
 
 
 
@@ -94,7 +85,7 @@
   or child selectors to target those elements.
 
 ------------------------------------------- */
-@import "modules/nav";
+
 
 
 
