@@ -1,12 +1,16 @@
+'use strict';
+
 var gulp = require('gulp');
 var path = require('path');
 var nano = require('cssnano');
 var panini = require('panini');
 var size = require('gulp-size');
-var sass = require('gulp-sass');
+var argv = require('yargs').argv;
 var gutil = require('gulp-util');
-var clean = require('gulp-clean');
 var notify = require('gulp-notify');
+var gulpif = require('gulp-if');
+var sass = require('gulp-sass');
+var clean = require('gulp-clean');
 var uglify = require('gulp-uglify');
 var merge = require('merge-stream');
 var rename = require('gulp-rename');
@@ -35,11 +39,20 @@ const SASS_INCLUDE_PATHS = [
   path.join(__dirname, 'node_modules')
 ];
 
+/* ==========================================================================
+ENVIRONMENT
+========================================================================== */
+gulp.task('env:prod', function() {
+	argv.prod = true;;
+});
+gulp.task('env:dev', function() {
+	argv.dev = true;
+});
 
 /* ==========================================================================
 SERVE
 ========================================================================== */
-gulp.task('serve', function () {
+gulp.task('serve', () => {
   return browserSync.init({
     server: {
       baseDir: BUILD_PATH + '/'
@@ -61,7 +74,7 @@ CLEAN
 command: gulp clean
 dependencies: rimraf
 ========================================================================== */
-gulp.task('clean', function () {
+gulp.task('clean', () => {
   rimraf(BUILD_PATH);
 });
 
@@ -70,7 +83,7 @@ STYLES
 command: gulp styles
 dependencies: gulp-sourcemaps gulp-notify browser-sync gulp-sass gulp-postcss autoprefixer postcss-object-fit-images cssnano
 ========================================================================== */
-gulp.task('styles', function () {
+gulp.task('styles', () => {
 
   var sassOptions = {
     errLogToConsole: true,
@@ -92,7 +105,7 @@ gulp.task('styles', function () {
 
   var stream = gulp.src('src/scss/style.scss')
     .pipe(size())
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(argv.dev, sourcemaps.init()))
     .pipe(sass(sassOptions)
       .on("error", notify.onError({
         title: "Sass Error",
@@ -114,7 +127,7 @@ gulp.task('styles', function () {
       mqpacker(mqpackerOptions),
       nano(nanoOptions)
     ]))
-    .pipe(sourcemaps.write('../maps/'))
+    .pipe(gulpif(argv.dev, sourcemaps.write('../maps')))
     .pipe(gulp.dest(BUILD_PATH + '/assets/css/'))
     .pipe(reload({
       stream: true,
@@ -127,14 +140,12 @@ SCRIPTS
 command: gulp scripts
 dependencies: gulp-sourcemaps gulp-include gulp-uglify
 ========================================================================== */
-gulp.task('scripts', function () {
+gulp.task('scripts', () => {
   return gulp.src('src/js/main.js')
     .pipe(include())
-    .pipe(sourcemaps.init({
-      loadMaps: true
-    }))
+    .pipe(gulpif(argv.dev, sourcemaps.init({loadMaps: true})))
     .pipe(uglify().on('error', gutil.log))
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(gulpif(argv.dev, sourcemaps.write('../maps')))
     .pipe(gulp.dest(BUILD_PATH + '/assets/js/'))
     .pipe(size({
       title: 'SCRIPTS'
@@ -146,7 +157,7 @@ SCRIPTS:VENDOR:COPY - Vendor scripts copied rather than concatenated
 command: gulp scripts
 dependencies: none
 ========================================================================== */
-gulp.task('scripts:vendor:copy', function () {
+gulp.task('scripts:vendor:copy', () => {
   return gulp.src('src/js/vendor/copy/**/*.js')
   .pipe(size({ title: 'SCRIPTS:VENDOR:COPY'}))
     .pipe(gulp.dest(BUILD_PATH + '/assets/js/vendor'));
@@ -163,7 +174,7 @@ IMAGES - image optimization (png,gif,jpg)
 command: gulp images
 dependencies: gulp-changed gulp-imagemin
 ========================================================================== */
-gulp.task('images', function () {
+gulp.task('images', () => {
   return gulp.src(['src/media/img/**/*'])
     .pipe(changed(BUILD_PATH + '/assets/img'))
     .pipe(size({ title: 'IMAGES'}))
@@ -179,7 +190,7 @@ SVG - svg optimization
 command: gulp svg
 dependencies: gulp-changed gulp-svgmin
 ========================================================================== */
-gulp.task('svg', function () {
+gulp.task('svg', () => {
   return gulp.src(['src/media/svg/**/*'])
     .pipe(changed(BUILD_PATH + 'assets/img', {extension: '.svg'}))
     .pipe(size({ title: 'SVG'}))
@@ -204,7 +215,7 @@ icon@2x.png (30px x 30px @72ppi)
 command: gulp sprite:images
 dependencies: gulp.spritesmith vinyl-buffer merge-stream gulp-imagemin8
 ========================================================================== */
-gulp.task('sprite:images', function () {
+gulp.task('sprite:images', () => {
   // Generate our spritesheet
   var spriteData = gulp.src('src/media/sprite-img/*.png').pipe(spritesmith({
     retinaSrcFilter: ['src/media/sprite-img/*@2x.png'],
@@ -232,7 +243,7 @@ gulp.task('sprite:images', function () {
 });
 
 // SPRITES:SVG (.svg) --------------------------------
-gulp.task('sprite:svg', function () {
+gulp.task('sprite:svg', () => {
 
   return gulp.src(['src/media/sprite-svg/**/*'])
     .pipe(size({ title: 'SPRITE:SVG'}))
@@ -267,7 +278,7 @@ templating with zurb's panini
 Docs: http://foundation.zurb.com/sites/docs/panini.html
 Repo: https://github.com/zurb/panini
 ========================================================================== */
-gulp.task('pages', function () {
+gulp.task('pages', () => {
   return gulp.src('src/templates/pages/**/*.{html,hbs,handlebars}')
     .pipe(panini({
       root: 'src/templates/pages/',
@@ -293,7 +304,7 @@ gulp.task('pages:reset', pagesReset);
 /* ==========================================================================
 WATCH
 ========================================================================== */
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch('src/scss/**/*', ['styles']);
   gulp.watch('src/media/img/**/*', ['images']);
   gulp.watch('src/media/svg/**/*', ['svg']);
@@ -304,18 +315,18 @@ gulp.task('watch', function () {
       'src/js/vendor/**/*',
       '!src/js/vendor/copy/**/*',
       'src/js/main.js'
-    ], function () {
+    ], () => {
       runSequence('scripts', reload);
     }
   );
-  gulp.watch(['src/js/vendor/copy/**/*'], function () {
+  gulp.watch(['src/js/vendor/copy/**/*'], () => {
       runSequence('scripts:vendor:copy', reload);
     }
   );
-  gulp.watch('src/templates/pages/**/*', function () {
+  gulp.watch('src/templates/pages/**/*', () => {
     runSequence('pages:reset', 'pages', reload);
   });
-  gulp.watch(['src/templates/{layouts,partials,helpers,data}/**/*'], function () {
+  gulp.watch(['src/templates/{layouts,partials,helpers,data}/**/*'], () => {
     runSequence('pages:reset', 'pages', reload);
   });
 
@@ -326,9 +337,10 @@ gulp.task('watch', function () {
 
 
 // The default task when we run `gulp` for doing development
-gulp.task('default', function () {
+gulp.task('default', () => {
   runSequence(
     'clean',
+    'env:dev',
     [
       'images',
       'svg',
@@ -341,5 +353,22 @@ gulp.task('default', function () {
     ],
     'serve',
     'watch'
+  );
+});
+
+gulp.task('build', () => {
+  runSequence(
+    'clean',
+    'env:prod',
+    [
+      'images',
+      'svg',
+      'sprite:images',
+      'sprite:svg',
+      'styles',
+      'scripts',
+      'scripts:vendor:copy',
+      'pages'
+    ]
   );
 });
