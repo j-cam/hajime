@@ -58,20 +58,14 @@ $gutter_split_percent: percentage($gutter_half / $site_max_width );
 $gutter_tablet: $gutter / 2;
 $gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
 
-$collection_grid_gutter: 24px;
+$headings-margin-bottom: 1rem;
+$paragraph-margin-bottom: 1rem;
 
-$standard_block_side_spacing: 24px;
-$standard_block_bottom_spacing: 34px;
+$standard_block_side_spacing: 1rem;
+$standard_block_bottom_spacing: 1rem;
 
-$collection_grid_item_margin: 34px;
-// Outer padding needs to be split to account for split gutters on items
-$collection_grid_padding: 0 percentage(( $gutter - ( $collection_grid_gutter / 2 )) / $site_max_width );
-
-
-$gridGutter: 0; // can be a %, but nested grids will have smaller margins because of it
-$radius: 0;
-
-
+$border-width:                1px !default;
+$border-color:                #eee !default;
 
 /*============================================================================
   2. Directory Paths & Z-Indexes
@@ -81,15 +75,8 @@ $radius: 0;
 $images_directory: '/assets/';
 
 
-// $spritesmith_ImgName: '{{ "spritesheet.png" | asset_url }}';
-// $spritesmith_retinaImgName: '{{ "spritesheet.png" | asset_url }}';
-
-// $shopifySpritesheet: #{$spritesmith_ImgName};
-
-// $shopifyRetinaSpritesheet: #{$spritesmith_retinaImgName};
-
-$spriteSmith_spritesheetAssetUrl:       '\'\{\{ "spritesheet.png" | asset_url \}\}\'';
-$spriteSmith_retinaSpritesheetAssetUrl: '\'\{\{ "spritesheet@2x.png" | asset_url \}\}\'';
+$spritesmith_ImgName: 'sprite.png';
+$spritesmith_retinaImgName: 'sprite@2x.png';
 
 // z-index reference
 $z_indexes: (
@@ -107,30 +94,41 @@ $z_indexes: (
   3. Typography
 ==============================================================================*/
 
-//---- Font Sizes
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
 
-$base_font_size:          16px; // Always 16px
-$base_line_height:        1.6;
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
 
-//---- Font Weights
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * .875) !default;
 
-$fw_regular:  400;
-$fw_medium:   500;
-$fw_bold:     700;
-$fw_black:    900;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
 
-//---- Font Families
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
 
-$sans:              'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, 'Helvetica Neue', Helvetica, sans-serif;
-$serif:             Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-$monospace:         'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-
-$body_font_family:  $sans;
-
-$headline_font_family: $sans;
-$headline_font_weight: $fw_medium;
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
 
 
+$headings-font-family:        inherit !default;
+$headings-font-weight:        500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              inherit !default;
+
+$dt-font-weight:              $font-weight-bold !default;
 
 //---- Font Sizes
 
@@ -162,80 +160,74 @@ $font_size_h6_min:  12px;
 /*============================================================================
   4. Colors
 ==============================================================================*/
+// Body
+//
+// Settings for the `<body>` element.
 
-//---- Color Names
+$body-bg:                   #fff !default;
+$body-color:                #545454 !default;
 
-$red:           #ff4444;
-$grey:          #b7b9b8;
-$blue:          #86bed8;
-$white:         #fff;
-$black:         #2c2c35;
-$lightest_grey: #f5f4f4;
+// Links
+//
+// Style anchor elements.
 
-//---- Named Colors
+$link-color:                #3d3e46 !default;
+$link-decoration:           none !default;
+$link-hover-color:          darken($link-color, 15%) !default;
+$link-hover-decoration:     underline !default;
 
-$primary_color:   $red;
-$secondary_color: $grey;
-$darkest:         #2c2c35;
-$lightest:        #fff;
+// Paragraphs
+//
+// Style p element.
 
-/*  ================================================================
-    Color Scheme
-    Examples based on the official Sass styleguide.
-================================================================= */
-
+$paragraph-margin-bottom:   1rem !default;
 /* Selections */
 $color_selection: #b3d4fc;
+$background_color_selection:  #eee;
+
+$color-border:  #eee;
+
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-cell-padding:          .75rem !default;
+$table-cell-padding-sm:       .3rem !default;
+
+$table-bg:                    transparent !default;
+
+$table-border-width:          $border-width !default;
+$table-border-color:          #545454 !default;
+
+$table-head-bg:               #545454 !default;
+$table-head-color:            #fff !default;
 
 
 
-
-
-$body_txt_color:  $black;
-$body_bg_color_init: $white;
-$body_bg_color_loaded: $white;
-$structure_main_bg_color: $white;
-$structure_main_bg_color_loaded: $red;
-
-$footer_bg_color:   $red;
-$footer_txt_color:  $lightest;
-
-$border_color:  $grey;
-
-$selection_color:             $red;
-$selection_background_color:  $lightest_grey;
-
-
-//---- Helper colors
-
-$disabled_grey: #d5d5d7;
-$disabled_border: darken($disabled_grey, 25%);
-$error_red: #d02e2e;
-$error_red_bg: #fff6f6;
-$success_green: #56ad6a;
-$success_green_bg: #ecfef0;
+$table-striped-order:         odd !default;
 
 
 //---- Button Defaults
 
 $button_color:                  #fff;
 $button_color_hover:            #fff;
-$button_color_disabled:         darken($disabled_grey, 25%);
+$button_color_disabled:         darken(#eee, 25%);
 $button_padding:                14px 20px;
 $button_font_size:              20px;
-$button_font_family:            $sans;
-$button_font_weight:            $fw_bold;
+$button_font_family:            $font-family-sans-serif;
+$button_font_weight:            $font-weight-bold;
 $button_line_height:            1.42;
 
 $button_background_color:       #2c2c35;
 $button_background_color_hover: #2c2c35;
-$button_background_color_disabled: $disabled_grey;
+$button_background_color_disabled: #eee;
 
 $button_background_color_secondary: #949497;
 $button_background_color_secondary_hover: #949497;
 
-$button_background_color_alt: $black;
-$button_background_color_alt_hover: $black;
+$button_background_color_alt: #5e5e5e;
+$button_background_color_alt_hover: #5e5e5e;
 
 
 
