@@ -280,7 +280,7 @@
     }
 }
 
-@mixin font-size($px_value: $base_font_size) {
+@mixin font-size($px_value: $font-size-base) {
     @include rems( font-size, $px_value);
 }
 
