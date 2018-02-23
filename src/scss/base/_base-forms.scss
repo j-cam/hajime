@@ -1,14 +1,22 @@
-//input[type=submit] {}
-//input[type=submit]:hover {}
 input[type="text"],
 input[type="email"],
 input[type="url"],
 input[type="password"],
-input[type="search"] {
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
     font-family: inherit;
-    &:focus {
-        outline: 1px dotted;
-    }
+    border-style: solid;
+    border-width: thin;
 }
 
 input:-webkit-autofill {
@@ -48,7 +56,9 @@ input[type="submit"] {
     color: $button_color;
 }
 
-// Timber @ line: 1369
+textarea {
+	width: 100%;
+}
 
 /*================ Prevent zoom on touch devices in active inputs ================*/
 
