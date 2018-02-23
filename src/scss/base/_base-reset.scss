@@ -261,6 +261,7 @@ pre {
 
 figure {
   // Apply a consistent margin strategy (matches our type styles).
+  //Extra wide images within figure tags don't overflow the content area.
   margin: 0 0 1rem;
 }
 
