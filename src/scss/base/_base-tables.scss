@@ -26,10 +26,8 @@ table {
     tfoot {
       width: 100%;
       border: 1px solid $table-border-color;
-      tr {
-        background: $table-head-bg;
-        color: $table-head-color;
-      }
+      background: $table-head-bg;
+      color: $table-head-color;
 
         td, th {
             border: none;
