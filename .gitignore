@@ -3,3 +3,6 @@
 /_sublime/**/*
 dist/assets/maps
 /npm-debug.log
+/docs/assets/maps/style.css.map
+/package-lock.json
+/docs/assets/maps/main.js.map
