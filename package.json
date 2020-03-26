@@ -58,5 +58,7 @@
     "vinyl-buffer": "^1.0.1",
     "yargs": "^11.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "natives": "^1.1.6"
+  }
 }
