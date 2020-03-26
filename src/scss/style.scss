@@ -21,14 +21,9 @@
 ==============================================================================*/
 
 @import "lib/typekit"; // wait for typekit fonts to load
-@import "lib/shopify-helpers";
-@import "lib/data-uri";
-@import "lib/functions";
+@import "lib/functions/import";
 @import "lib/mixins/import"; // wait for typekit fonts to load
-@import "lib/mixins";
-@import "lib/placeholders";
-@import "lib/utils";
-@import "lib/helpers";
+
 
 
 

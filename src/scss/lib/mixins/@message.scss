@@ -1,0 +1,23 @@
+@mixin message($glyph: "\f00d", $color: $info) {
+    padding: 1em 1.618em 1em 5em;
+    border-top: .202em solid $color;
+    background: $bg_light;
+    margin-bottom: 2.618em;
+    font-weight: normal;
+    position: relative;
+    color: #666;
+    &:before {
+        font-family: 'FontAwesome';
+        content: $glyph;
+        color: $color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 2.618em;
+        background: darken( $bg_light, 2%);
+        text-align: center;
+        padding: 1em .618em;
+        font-weight: normal !important;
+    }
+}

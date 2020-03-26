@@ -1,0 +1,13 @@
+@mixin clearfix() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    *zoom: 1;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
