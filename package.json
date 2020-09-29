@@ -4,7 +4,10 @@
   "description": "A beginning point for fron-end projects.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gh-pages": "gh-pages -d docs",
+    "deploy:staging": "node deploy/staging.js",
+    "deploy:production": "gulp build && node deploy/production.js"
   },
   "repository": {
     "type": "git",
@@ -59,6 +62,7 @@
     "yargs": "^11.1.0"
   },
   "dependencies": {
+    "gh-pages": "^2.2.0",
     "natives": "^1.1.6"
   }
 }
