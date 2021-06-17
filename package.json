@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
     "gh-pages": "gh-pages -d docs",
     "deploy:staging": "node deploy/staging.js",
     "deploy:production": "gulp build && node deploy/production.js"
